@@ -70,14 +70,14 @@ const store = useStore()
 const edited = ref(props.successMessage)
 
 
-// Blog laden
+// Load blog
 const { blog, loadBlog, saved } = useGetBlog()
 
 await loadBlog(props.id)
 
 
 if (blog.value && !saved.value) {
-    // Re-routen als slug niet klopt
+    // Re-routen if slug is incorrect
     if (blog.value.slug !== route.params.slug) {
         router.push({ name: 'SingleBlogDetails', params: { id: blog.value.id, slug: blog.value.slug }})
     } 
@@ -87,7 +87,7 @@ if (blog.value && !saved.value) {
 }
 
 
-// Observer & Comments laden
+// Load comments after Intersection Observer intersected
 const loadComments = ref(false)
 
 const intersected = () => {
@@ -96,14 +96,14 @@ const intersected = () => {
 }
 
 
-// Most Popular laten zien of niet
+// Show Most Popular Component based on screen size
 const screenSize = computed (() => store.state.screenSize)
 const showMostPopular = computed (() => {
     return screenSize.value && screenSize.value < 768 ? true : false
 })
 
 
-// Nieuwe blog laden als je via Most Popular navigeert
+// Load new blog if you navigate via Most Popular
 const key = ref(null)
 onBeforeRouteUpdate ( async (to) => {
     edited.value = null
@@ -114,7 +114,7 @@ onBeforeRouteUpdate ( async (to) => {
  
 
 onMounted(async () => {
-    // Saved Blog Laden
+    // If blog is not published (saved), make new API call with authentication
     if (saved.value) {
         let { blog: savedBlog, loadSavedBlog } = useGetSavedBlog()
         if (!props.user || props.user.rights < 2) {

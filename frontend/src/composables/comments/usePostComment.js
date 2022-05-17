@@ -7,11 +7,11 @@ export default () => {
 
     const postComment = async (comment) => {
         try {
-            // Links niet toestaan
+            // Filter out links
             if(comment.content.match(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/)) {
                 return postError.value = 'You can\'t do that'
             }
-            // Onnodige spaties weghalen
+            // Remove whitespace
             comment.content = comment.content.replace(/\s{2,}/g, ' ')
 
             if (comment.commentId) {

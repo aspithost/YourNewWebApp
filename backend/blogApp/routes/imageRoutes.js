@@ -16,6 +16,5 @@ router.post('/upload',
     preUpload, 
     formatImage);
 
-    
 // Export Router
 module.exports = router;

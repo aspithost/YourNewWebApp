@@ -4,18 +4,17 @@ import { renderHeadToString } from '@vueuse/head'
 
 export async function render(url, cookiewallCookie, languageCookie, accessToken, refreshToken, manifest) {
     const { app, head, router, store } = createApp()
-    // Taalinstellingen van gebruiker uit cookie halen
+    // Language preferences of user
     setLanguage(store, languageCookie)
 
-    // Cookiewall aan of uit
+    // Cookiewall on or off
     if (cookiewallCookie) {
         if (Date.now() < cookiewallCookie + 31536000000 && cookiewallCookie > 1646476159087) {
             store.dispatch('allowFunctionalCookies', true)
         } 
     }  
     
-    // Store gebruiker automatisch verifieren/inloggen server-side zolang er tokens aanwezig zijn
-    // Server Side Token is alleen nodig als access token niet geldig is of niet aanwezig is.
+    // Authenticate/authorize user on first render. Server Side token only necessary if access token is invalid or not present
     const newAccessToken = await getUserData(store, accessToken, refreshToken)
     
     // set the router to the desired URL before rendering

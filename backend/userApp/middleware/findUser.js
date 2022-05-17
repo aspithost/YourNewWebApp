@@ -29,7 +29,6 @@ exports.findUser = async (req, res, next) => {
         } else if (cachedUser.loggedOut || cachedUser.blacklisted) {
             return deleteCookies(res);
 
-        // End
         } else {
             req.user = cachedUser;
         }  

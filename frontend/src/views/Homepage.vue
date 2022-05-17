@@ -333,7 +333,7 @@ onMounted(() => {
     }
 })
 
-// Scroll into view na click op homepage banner button
+// Scroll into view after click op homepage banner button
 const clicked = inject('clicked')
 const clickedTimeout = ref(false)
 
@@ -343,14 +343,14 @@ watch(clicked, () => {
         clickedTimeout.value = false
     }, 1000)
     router.replace({ hash: clicked.value })
-    document.getElementById(clicked.value.slice(1)).scrollIntoView({
-        behavior: 'smooth'
-    })    
+    document.getElementById(clicked.value.slice(1))
+        .scrollIntoView({ behavior: 'smooth' })    
 })
 
 
-// Observer voor hash url
+// Intersection Observer to set url hash
 const whenTouching = (entries) => {
+    // If navigating after clicking button, do not update hash on scroll for 1 sec
     if (clickedTimeout.value) return
     entries.forEach(entry => {
         if (entry.isIntersecting) { 
@@ -366,7 +366,7 @@ onMounted(() => {
         rootMargin: "0% 0% -80% 0%",
         threshold: 0
     })
-    // Timeout zodat hash niet verandert bij first load
+    // Timeout so hash does not change on first load & lazy scroll
     headerTimeout = setTimeout(() => {
         document.body.querySelectorAll('h1, main [id]').forEach(header => {
             headerObserver.observe(header) 

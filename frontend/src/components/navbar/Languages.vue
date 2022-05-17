@@ -34,7 +34,7 @@ const languageDutch = computed (() => store.state.languageDutch)
 
 const dutch = ref()
 
-// Default value van languageDutch is false tenzij je een cookie hebt
+// Default value of languageDutch is false unless you have a cookie
 if (!dutch.value) dutch.value = languageDutch.value
 
 const toggleLanguage = (val) => {

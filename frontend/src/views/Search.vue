@@ -70,12 +70,11 @@ const searchTags = computed (() => {
 })
 
 
-// Alles voor de blogs
 const { blogs, error: blogsError, loadBlogs } = useGetBlogs()
 const { blogs: searchedBlogs, error: searchError, loadSearchedBlogs } = useGetSearchedBlogs()
 
 
-// Samenvoegen blogs && searched 
+// Join blogs && searched 
 const allBlogs = computed (() =>  {
     return [...blogs.value, ...searchedBlogs.value]
 })
@@ -100,7 +99,7 @@ const filteredBlogs = computed (() => {
     }
 })
 
-// Searched Blogs laden & filteren op basis van al aanwezige blogs
+// Load searched & filter based on already present blogs
 const searchedBlogsAll = async (intersected) => {
     await loadSearchedBlogs(searchTags.value, intersected)
     if (!blogs.value.length) return 

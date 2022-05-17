@@ -75,7 +75,6 @@ import useEventListener from '/src/composables/useEventListener'
 import useGetBlog from '/src/composables/blogs/useGetBlog'
 import useGetBlogDate from '/src/composables/blogs/useGetBlogDate'
 import useGetEmbeddedBlogHTML from '/src/composables/blogs/useGetEmbeddedBlogHTML'
-import useGetHTMLWrappers from '/src/composables/images/useGetHTMLWrappers'
 
 import useGetSocialMediaScripts from '/src/composables/thirdPartyScripts/useGetSocialMediaScripts'
 import useHighlightJs from '/src/composables/thirdPartyScripts/useHighlightJs'
@@ -87,7 +86,7 @@ const blogServer = import.meta.env.VITE_BLOG_SERVER
 
 const store = useStore()
 
-// Datum ophalen
+// Get blog date
 const { writtenDate, findDate } = useGetBlogDate()
 
 findDate(blog.value.publishDate)
@@ -98,7 +97,7 @@ onMounted (() => {
     useGetSocialMediaScripts()
 })
 
-// Als gebruiker cookies accepteert, opnieuw social media scripts runnen
+// If user accepts cookies, run social media scripts again
 const allowCookies = computed (() => store.state.acceptFunctionalCookies)
 watch(allowCookies, () => {
     if (allowCookies.value) {
@@ -127,7 +126,7 @@ const getEmbeddedBlogs = async () => {
 const { highlightCode } = useHighlightJs()
 
 
-// Links naar blogs op eigen website onderscheppen en met Vue Router regelen.
+// Intercept links to blogs on own website and route with Vue-Router.
 const router = useRouter()
 
 const listenToClicks = (event) => {
@@ -156,10 +155,7 @@ onMounted (() => {
 
 
 onMounted (() => {
-    // Wrappers om images plaatsen
-    useGetHTMLWrappers()
-
-    // Embedded Blog Wrapper laden
+    // Load embedded blog wrapper
     if (document.querySelector('.getEmbeddedBlog')) {
         getEmbeddedBlogs()
     }

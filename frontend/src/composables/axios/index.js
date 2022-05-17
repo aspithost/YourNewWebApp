@@ -22,11 +22,5 @@ const axiosBlogCredentials = axios.create({
     withCredentials: true
 });
 
-// for (let axiosInstance of [axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials]) {
-//     axiosInstance.interceptors.request.use(req => {
-//         console.log('fissa')
-//     })
-// }
-
 
 export { axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials }

@@ -1,8 +1,3 @@
-export default (content) => {
-    // let matches = blog.value.content.match(/<pre\s{1,}class="codeblock/g)
-    return escapeCodeBlock(content)
-}
-
 const escapeCodeBlock = (content, pos) => {
 
     const posStart = content.indexOf('<code>', pos) + 6
@@ -24,4 +19,8 @@ const escapeCodeBlock = (content, pos) => {
     } 
 
     return content
+}
+
+export default (content) => {
+    return escapeCodeBlock(content)
 }

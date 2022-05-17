@@ -202,7 +202,7 @@ const router = useRouter()
 const isPending = ref(false)
 const preview = ref(false)
 
-// Edit blog of new blog
+// Edit blog or new blog
 const blog = ref(props.blog ? JSON.parse(props.blog): {})
 
 if (props.blog) {
@@ -243,12 +243,12 @@ const submitBlog = async () => {
             if (blog.value.featured === 'None') blog.value.featured = 0
             if (!blog.value.user) blog.value.user = props.user.userId     
 
-            // Sanitizen van Codeblock entries
+            // Sanitize codeblock entries
             if (blog.value.content.match(/<pre\s{1,}v-if="highlightCode"/)) {
                 blog.value.content = useEscapeCodeBlock(blog.value.content)
             }
 
-            // Als ik geen props.blog heb betekent het dat het een nieuwe blog is, anders is het een edit.
+            // If no props.blog, the blog is new. If there is, it's an edit
             await postBlog(event, blog.value, props.blog ? false : true)
 
             localStorage.removeItem(`blog${blog.value.id}`)
