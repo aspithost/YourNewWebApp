@@ -1,0 +1,12 @@
+containers
+dumps
+ynwa.conf
+
+dist*
+dist-ssr*
+Dockerfile*
+node_modules*
+.dockerignore
+.DS_Store*
+.env*
+*.local*

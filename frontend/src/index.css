@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Saira+Extra+Condensed:wght@700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400&display=swap');
+
+@tailwind base;
+
+@layer base {
+    p {
+        @apply py-2;
+    }
+    strong {
+        @apply font-semibold;
+    }
+}
+
+@tailwind components;
+
+@layer components {
+    .codeblock {
+        @apply bg-[#0A313D] whitespace-pre overflow-x-scroll text-sm pb-2 px-4 rounded-md;
+    }
+    .code-single-line {
+        @apply text-sm bg-ynwa bg-opacity-10 px-1 py-0.5 rounded;
+    }
+    .h1-base {
+        @apply text-gray-800 text-2xl font-extrabold pb-4 sm:text-2xl lg:text-3xl md:pb-6;
+    }
+    .h2-base{
+        @apply text-gray-800 text-lg font-bold pt-2 sm:text-xl;
+    } 
+    .h3-base {
+        @apply text-gray-800 font-bold pt-2 sm:text-lg;
+    }
+    .h1-narrow {
+        @apply text-ynwa font-header text-3xl font-extrabold pb-4 md:text-4xl;
+    }
+    .h2-narrow {
+        @apply text-ynwa font-header text-2xl font-extrabold pb-4 md:text-3xl;
+    }
+    .header-base {
+        @apply text-gray-800 hover:text-ynwa hover:opacity-80;
+    }
+    .image-attribution {
+        @apply text-gray-600 text-sm italic;
+    }
+    .input-form {
+        @apply flex flex-col w-2/3 sm:w-1/2 my-2;
+    }
+    .input-header {
+        @apply text-gray-800 font-bold sm:text-lg;
+    }
+    .link {
+        @apply font-semibold text-ynwa hover:opacity-80 hover:cursor-pointer;
+    }
+    .skeleton {
+        @apply bg-gray-300 animate-pulse;
+    }
+    .tag {
+        @apply bg-gray-100 text-gray-600 inline-block border border-gray-100 text-sm rounded-full py-1 px-3 m-0.5;
+    } 
+    .text-default {
+        @apply font-light leading-7 lg:font-normal;
+    }
+    .ynwacomp {
+        @apply bg-white rounded-md shadow-md p-4 lg:py-6 lg:px-8 2xl:px-10; 
+    }
+}
+
+@tailwind utilities;
+
+@layer utilities {
+    .clip-text {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+    }
+}
