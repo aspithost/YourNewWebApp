@@ -8,7 +8,7 @@ exports.autoLoginUser = async (req, res, next) => {
     } else {
         // Verify AccessToken
         const user = verifyAccessToken(accessToken);
-        if (!user) throw new Error('no auth')
+        if (!user) return res.status(401).json({ message: 'no user' }) 
         req.user = user;
         next();
     }
@@ -16,7 +16,7 @@ exports.autoLoginUser = async (req, res, next) => {
 
 exports.hasAuth = (req, res , next) => {
     if (!req.user || req.user.rights < 2) {
-        throw new Error('no auth'); 
+        return res.status(403).json({ message: 'forbidden' }) 
     } else {
         next();
     }

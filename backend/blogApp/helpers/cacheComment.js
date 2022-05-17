@@ -4,7 +4,7 @@ const client = getRedis();
 exports.cacheComments = async (blogId, comments) => {
     let entry = 'comments' + blogId.toString();
     await client.hSet(entry, 'data', JSON.stringify(comments));
-    client.expire(entry, 86400);
+    client.expire(entry, 60);
 }
 
 exports.checkCommentsCache = async (blogId) => {

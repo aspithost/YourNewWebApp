@@ -10,10 +10,7 @@ const { getPasswordHash } = require('../helpers/databasePasswordHash');
 
 exports.autoLogin = async (req, res, next) => {
     try {
-        return res.status(200).json({ 
-            message: 'autologin afgerond',
-            accessToken: res.accessToken
-        });
+        return res.status(200).json({ message: 'finished autologin' });
     } catch (err) {
         next (err);
     }
@@ -24,7 +21,7 @@ exports.checkPasswordHash = async (req, res, next) => {
         const passwordHash = await getPasswordHash(req.params.passwordHash);
         const user = await findUserById(passwordHash.user._id);
         if (!user) {
-            return res.status(401).json({ message: 'Nope'});
+            return res.status(401).json({ message: 'Not logged in'});
         } else {
             return res.status(200).json({
                 message: 'You can now set a new password',
@@ -58,12 +55,10 @@ exports.findBlogAuthor = async (req, res, next) => {
 exports.logoutUser = async (req, res, next) => {
     try {
         if (!req.user) {
-            return res.status(403).json({ message: 'niet ingelogd vriend' });
+            return res.status(403).json({ message: 'not logged in' });
         } else {
             deleteCookies(res);
-            return res.status(201).json({
-                message: 'uitgelogd lullo'
-            });
+            return res.status(201).json({ message: 'logged out' });
         }
     } catch (err) {
       next (err);
@@ -73,7 +68,7 @@ exports.logoutUser = async (req, res, next) => {
 exports.logoutUserAllDevices = async (req, res, next) => {
     try {
         if (!req.user) {
-            return res.status(403).json({message: 'niet ingelogd vriend'});
+            return res.status(403).json({ message: 'not logged in' });
         } else {
             cacheLoggedOutUser(user);
             return res.status(201).json({ 

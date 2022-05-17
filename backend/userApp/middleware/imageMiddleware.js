@@ -11,12 +11,11 @@ const fileFilter = (req, file, cb) => {
     if (mimetype && extname) {
         return cb (null, true);
     } else {
-        cb ('Error: niet de juiste image G');
+        cb ('Error: not the right image');
     }
 }
 
 exports.preUpload = multer({
-    storage: memoryStorage,/*storage,
-    limits: { fileSize: 500000},*/
+    storage: memoryStorage,
     fileFilter: fileFilter
 }).single('selectedAvatar');

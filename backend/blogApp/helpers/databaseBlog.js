@@ -18,7 +18,6 @@ exports.findBlogs = (date) => {
         publishDate: { $lt: date }, 
         isPublished: true })
             .limit(10)
-            // Dit is nodig zodat ik extra dingen op de object kan pushen!
             .lean();
 }
 
@@ -52,7 +51,6 @@ exports.findSearchedBlogs = (date, search) => {
     return Blog.find({ 
         publishDate: { $lt: date }, 
         isPublished: true, 
-        // tags: { $all: search } })
         tags: { $regex: regex } })
             .limit(10)
             .lean();

@@ -13,15 +13,13 @@ exports.patchBlog = async (req, res, next) => {
 
             // Find blog in DB
             blog = await findBlogById(req.params.id);
-            if (!blog) {
-                return res.status(404).json({ message: 'blog not found'});
-            } 
+            if (!blog) return res.status(404).json({ message: 'not found'});
         } 
-        // Rechten checken
+        // Check rights
         if (req.user.rights === 2 && blog.user !== req.user.userId) {
-            return res.status(403).json({ message: 'je mag alleen eigen blog editen vriend' });
+            return res.status(403).json({ message: 'you may only edit your own blogs' });
 
-        // Blog patchen en oude cache verwijderen
+        // Patch blog & remove cache
         } else {
             const patchedBlog = await patchBlogById(blog._id, req.body); 
             if (patchedBlog.featured >= 0) {

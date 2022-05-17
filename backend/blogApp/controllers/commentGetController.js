@@ -7,17 +7,17 @@ const { findCommentsInstance } = require('../helpers/databaseComment');
 
 exports.getComments = async (req, res, next) => {
     try {
-        // In cache kijken voor het aantal comments
+        // Check for number of comments in cache
         const numberOfCachedComments = await checkNumberOfCommentsCache(req.params.blogId);
         if (numberOfCachedComments === 0) {
-            return res.status(200).json({ message: 'geen comments' });
+            return res.status(200).json({ message: 'no comments' });
 
-        // Indien er geen cache entry is voor aantal comments, zoeken naar comments entry in cache.
+        // If no cache entry for number of comments, check for comments entry in cache
         } else {
             const cachedComments = await checkCommentsCache(req.params.blogId);
             if (!cachedComments) {
 
-                // Zoeken naar comments in DB & cachen van het aantal comments 
+                // Search comments in DB & cache number of comments
                 const dbCommentsInstance = await findCommentsInstance(req.params.blogId);
                 if (!dbCommentsInstance) {
                     cacheNumberOfComments(req.params.blogId, 0);
@@ -28,7 +28,7 @@ exports.getComments = async (req, res, next) => {
                     // Populate comments
                     const populatedCommentsInstance = await dbCommentsInstance.populate('comments');
 
-                    // Loop om alle replies te populaten
+                    // Loop to populate replies
                     let numberOfComments = 0
                     const populateComments = async (comments) => {
                         for (let i = 0; i < comments.length; i++) {  

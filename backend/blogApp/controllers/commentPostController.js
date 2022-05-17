@@ -9,23 +9,21 @@ const { createComment,
 
 exports.createComment = async (req, res, next) => {
     try {
-        // Comments Instance ophalen uit DB
+        // Get Comments Instance from DB
         let commentsInstance = await findCommentsInstance(req.body.blogId);
         if (!commentsInstance) {
             commentsInstance = await createCommentsInstance(req.body.blogId);
         }
         
-        // Nieuwe Comment maken, aan commentsInstance toevoegen en opslaan
+        // Create new comment, add to commentsInstance and save
         const newComment = await createComment(req.body);
         await commentsInstance.comments.push(newComment);
         await commentsInstance.save();
 
-        // Comments cache & blog cache verwijderen en returnen.
+        // Delete comments cache & blog cache
         deleteBlogCache(req.body.blogId);
         deleteCommentsCache(req.body.blogId);
-        return res.status(200).json({ 
-            message: 'fissa comment aangemaakt',
-        });
+        return res.status(200).json({ message: 'comment created' });
     } catch (error) {
         next (error);
     }
@@ -40,7 +38,7 @@ exports.createReply = async (req, res, next) => {
         deleteBlogCache(req.body.blogId);
         deleteCommentsCache(req.body.blogId);
         return res.status(200).json({
-            message: 'reply gemaakt',
+            message: 'reply created',
             reply
         })
     } catch (err) {

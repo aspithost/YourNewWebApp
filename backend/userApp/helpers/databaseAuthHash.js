@@ -6,7 +6,6 @@ exports.createAuthHash = (userId) => {
         authHash: hash,
         user: userId
     });
-    // Hier nog iets toevoegen dat de persoon een mailtje krijgt oid.
 }
 
 exports.deleteAuthHash = (hashId) => {

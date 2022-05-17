@@ -5,11 +5,8 @@ const { generateAccessToken,
     generateRefreshToken } = require('../helpers/tokens');
 
 exports.autoLogin = (req, res) => {
-    if (req.needsRefreshToken) {
-        const refreshToken = generateRefreshToken(req.user._id);
-        setRefreshCookie(refreshToken, res);  
-    }
+    const refreshToken = generateRefreshToken(req.user._id);
     const accessToken = generateAccessToken(req.user);
+    setRefreshCookie(refreshToken, res);  
     setAccessCookie(accessToken, res);   
-    res.accessToken = accessToken
 }

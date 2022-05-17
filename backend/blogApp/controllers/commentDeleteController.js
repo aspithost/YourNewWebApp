@@ -10,17 +10,17 @@ exports.deleteComment = async (req, res, next) => {
     try {
         const comment = await findComment(req.params.commentId);
 
-        //Kijken of comment op de blog zelf geplaatst is
+        // Check if comment is nested
         const originalComments = await findComments(req.params.blogId);
         const parentComment = await getParentComment(originalComments, req.params.commentId);
 
-        // // Alle reacties op de comment ophalen en verwijderen.
+        // Delte all nested comments
         await deleteNestedComments(comment);    
 
-        // Oorspronkelijke comment zelf deleten
+        // Delete comment
         await deleteComment(req.params.commentId);
 
-        // Indien er een parent is, comment weghalen uit replies;
+        // In case of parent, remove child reference in parent
         if (parentComment) {
             const index = parentComment.comments ? parentComment.comments.indexOf(req.params.commentId) : parentComment.replies.indexOf(req.params.commentId)
             if (index > -1) {
@@ -29,7 +29,7 @@ exports.deleteComment = async (req, res, next) => {
             }
         }
 
-        // Cache van comments op deze blog weghalen en cache van blog zelf ook verwijderen
+        // Delete cache
         deleteCommentsCache(req.params.blogId);
         deleteBlogCache(req.params.blogId);
         

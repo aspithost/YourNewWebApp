@@ -99,7 +99,6 @@ exports.loginUser = async (req, res, next) => {
                 // Login User
                 } else {
                     req.user = user;
-                    req.needsRefreshToken = true;
                     autoLogin(req, res);
                     return res.status(200).json({ 
                         message: 'ingelogd gino, van harte' 

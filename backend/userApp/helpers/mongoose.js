@@ -26,6 +26,3 @@ exports.connectToMongoose = async () => {
     }
     console.log('Connected to the database');
 }
-
-// Ik moet URL van de relevante DB-service zoals ik het genoemd heb in Kubernetes gebruiken
-//'mongodb://user-mongodb-service-clusterip:27017/fissabase'

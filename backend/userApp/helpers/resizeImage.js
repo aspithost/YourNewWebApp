@@ -2,7 +2,6 @@ const sharp = require('sharp');
 
 exports.resizeImage = async (file, username) => {
     
-
     let filename = 
         username +
         file.originalname;

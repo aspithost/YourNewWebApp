@@ -12,14 +12,10 @@ exports.findUser = async (req, res, next) => {
     if (!tokenData) {
         return next();
     } else {
-        // ALS REFRESH TOKEN OUDER IS DAN 1 DAG, NIEUWE GENEREREN
-        req.needsRefreshToken = tokenData.exp - Date.now() / 1000 < 1123200 ? true : false
-
-        // CHECK USER CACHE
+        // Check user cache
         const cachedUser = await checkUserCache(tokenData.userId);
 
-        // IF NO USER IN CACHE, CHECK DB & CACHE USER
-        // let dbUser
+        // If no cached user, check DB and then cache the user
         if (!cachedUser) {
             const dbUser = await findUserById(tokenData.userId);
             if (!dbUser) return res.status(404).json({ message: 'Not found' })
@@ -29,11 +25,11 @@ exports.findUser = async (req, res, next) => {
             cacheUser(dbUser);
             req.user = dbUser;
 
-        // CHECK IF USER WANTS TO BE LOGGED OUT OR IS BLACKLISTED
+        // Check if user wants to be logged out or is blacklisted
         } else if (cachedUser.loggedOut || cachedUser.blacklisted) {
             return deleteCookies(res);
 
-        // EINDE
+        // End
         } else {
             req.user = cachedUser;
         }  

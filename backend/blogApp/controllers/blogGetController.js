@@ -29,14 +29,13 @@ exports.getBlog = async (req, res, next) => {
             // Check DB
             const dbBlog = await findBlogById(req.params.id);
             if (!dbBlog) { 
-                return res.status(404).json({ message: 'not found G'});   
+                return res.status(404).json({ message: 'not found' });   
             
-            // Als blog nog niet geplucieerd is, lege 204 status sturen zodat front-end na frontend authorization een call naar
-            // saved blogs kan maken
+            // If blog is not published, send empty 204 response to frontend. Frontend can then make call to protected route.
             } else if (!dbBlog.isPublished) {
                 return res.status(204).json();
 
-            // Blog author ophalen!
+            // Get blog author
             } else {
                 dbBlog.author = await getBlogAuthor(dbBlog.user);
 
@@ -48,12 +47,9 @@ exports.getBlog = async (req, res, next) => {
                 }
                 dbBlog.numberOfComments = num;
 
-                // Cache en Return!
+                // Cache & Return!
                 cacheBlog(dbBlog);
-                return res.status(200).json({
-                    message: 'here\'s your blog! ',
-                    blog: dbBlog
-                });
+                return res.status(200).json({ blog: dbBlog });
             }
         
         // Return cached blog
@@ -79,9 +75,9 @@ exports.getBlogs = async (req, res, next) => {
         if (!cachedBlogs) {
             const blogs = await findBlogs(req.query.date);
             if (!blogs) { 
-                return res.status(404).json({ message: 'not found G'});   
+                return res.status(404).json({ message: 'not found' });   
 
-            // Blog authors ophalen!
+            // Get blog authors
             } else {
                 await getBlogAuthors(blogs);
 

@@ -16,12 +16,12 @@ exports.activateUser = async (req, res, next) => {
     try {
         const authHash = await getAuthHash(req.params.authHash);
         if (!authHash)  { 
-            return res.status(401).json({ message: 'nope' });
+            return res.status(403).json({ message: 'Forbidden' });
         } else {
             const verifiedUser = await patchUser(authHash.user, { isverified: true });
             await deleteAuthHash(authHash._id);
             return res.status(201).json({
-                message: 'succesvol geactiveerd gino',
+                message: 'successfully actived your account',
                 username: verifiedUser.username
             });
         }
@@ -107,7 +107,7 @@ exports.patchPassword = async (req, res, next) => {
 exports.patchRights = async (req, res, next) => {
     try {
         if (req.user.rights !== 3) {
-            res.status(403).json({message: 'mag je niet doen vriend'});
+            res.status(403).json({ message: 'Forbidden' });
         } else {
             const updatedUser = await updateRights(req.body.username, req.body.newRights);
             cacheUser(updatedUser);
@@ -115,8 +115,8 @@ exports.patchRights = async (req, res, next) => {
                 message: `Gebruiker ${req.user.username} heeft nu ${req.user.rights} rechten`
             });
         }
-    } catch(err) {
-        next(err);
+    } catch (err) {
+        next (err);
     }
 }
 

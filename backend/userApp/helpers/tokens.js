@@ -18,7 +18,7 @@ exports.generateRefreshToken = (userId) => {
     },
         process.env.JWT_REFRESH_KEY,
     {
-            expiresIn: '14d'
+        expiresIn: '14d'
     });
 }
 
@@ -26,7 +26,6 @@ exports.verifyRefreshToken = (refreshToken) => {
     try {
         return jwt.verify(refreshToken, process.env.JWT_REFRESH_KEY);
     } catch (err) {
-        // Als er geen tokenData is: GEEN (!!) error returnen, anders stopt de rest van de middleware gelijk
-        return;
+        return err;
     }
 }

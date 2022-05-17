@@ -10,7 +10,7 @@ exports.createBlog = async (req, res, next) => {
             deleteBlogsCache();
         } 
         return res.status(200).json({
-            message: 'blog gemaakt g',
+            message: 'blog created',
             blog
         });
     } catch (err) {
