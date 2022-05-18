@@ -85,5 +85,5 @@ app.use((req, res) => {
 
 // End
 app.listen(process.env.APP_PORT, () => { 
-    console.log(`luistert nu naar auth requests op port ${process.env.APP_PORT}`)
+    console.log(`now listening to user on ${process.env.APP_PORT}`)
 });

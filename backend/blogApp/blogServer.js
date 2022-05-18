@@ -84,4 +84,6 @@ app.use((req, res) => {
 
 
 // End
-app.listen(process.env.APP_PORT, () => {console.log(`luistert nu naar blog requests op port ${process.env.APP_PORT}`)});
+app.listen(process.env.APP_PORT, () => { 
+    console.log(`now listening to requests on ${process.env.APP_PORT}`)
+});
