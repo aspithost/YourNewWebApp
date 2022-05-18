@@ -10,11 +10,11 @@ exports.sendVerificationEmail = async (user, hash) => {
     `;
 
     let transporter = nodemailer.createTransport({ 
-        host: 'smtp-relay.sendinblue.com',
+        host: `${process.env.SMTP_HOST}`,
         port: 587,
         auth: {
-            user: 'abelspithost@gmail.com',
-            pass: 'waPvXdsOY6hzj4y0',
+            user: `${process.env.NODEMAILER_USER}`,
+            pass: `${process.env.NODEMAILER_PASSWORD}`
         },
     });
 
@@ -41,11 +41,11 @@ exports.sendPasswordEmail = async (user, hash) => {
     `;
 
     let transporter = nodemailer.createTransport({ 
-        host: 'smtp-relay.sendinblue.com',
+        host: `${process.env.SMTP_HOST}`,
         port: 587,
         auth: {
-            user: 'abelspithost@gmail.com',
-            pass: 'waPvXdsOY6hzj4y0',
+            user: `${process.env.NODEMAILER_USER}`,
+            pass: `${process.env.NODEMAILER_PASSWORD}`
         },
     });
 
