@@ -23,10 +23,10 @@
 
 
     <Observer @intersect="intersected" />
-    <Head v-if="blog && blog.author"> 
+    <Head v-if="blog"> 
         <title> {{ blog.title }} </title>
         <meta name="article:publisher" content="yournewwebapp" />
-        <meta name="author" :content="blog.author.username" />
+        <meta name="author" :content="blog.author?.username" />
         <meta name="description" :content="blog.description" />
         <meta name="date" :content="blog.publishDate" />
         <meta name="image" :content="`https://yournewwebapp.com/fissafotos/${blog.thumbnail}`" />

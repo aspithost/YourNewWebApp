@@ -2,7 +2,7 @@
     <div class="flex items-end">
 
         <img 
-            v-if="author.avatar" 
+            v-if="author?.avatar" 
             :src="`${authServer}/avatars/${author.avatar}`" 
             :alt="author.username"
             height="40"
@@ -13,6 +13,7 @@
 
         <div class="flex-col">
             <div 
+                v-if="author?.username"
                 class="text-xs sm:text-sm"
                 :class="{'md:text-xs lg:text-sm' : !route.path.match(/\/blogs\/\d/) }"> 
                     {{ author.username }} 
