@@ -29,7 +29,7 @@ exports.getBlog = async (req, res, next) => {
             // Check DB
             const dbBlog = await findBlogById(req.params.id);
             if (!dbBlog) { 
-                return res.status(404).json({ message: 'not found' });   
+                return res.status(404).json();   
             
             // If blog is not published, send empty 204 response to frontend. Frontend can then make call to protected route.
             } else if (!dbBlog.isPublished) {
@@ -75,7 +75,7 @@ exports.getBlogs = async (req, res, next) => {
         if (!cachedBlogs) {
             const blogs = await findBlogs(req.query.date);
             if (!blogs.length) { 
-                return res.status(404).json({ message: 'not found' });   
+                return res.status(404).json();   
 
             // Get blog authors
             } else {
