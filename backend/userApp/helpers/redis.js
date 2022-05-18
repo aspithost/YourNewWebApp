@@ -27,5 +27,5 @@ module.exports = {
             console.log('Redis error: ', err)
         }
     },
-    getRedis: () => client
+    getRedisClient: () => client
 }

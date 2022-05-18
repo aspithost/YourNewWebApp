@@ -1,5 +1,5 @@
-const { getRedis }= require('./redis');
-const client = getRedis();
+const { getRedisClient } = require('./redis');
+const client = getRedisClient();
 
 exports.cacheBlog = async (blog) => {
     await client.hSet(blog.id.toString(), 'data', JSON.stringify(blog));

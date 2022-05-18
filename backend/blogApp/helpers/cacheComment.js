@@ -1,5 +1,5 @@
-const { getRedis }= require('./redis');
-const client = getRedis();
+const { getRedisClient }= require('./redis');
+const client = getRedisClient();
 
 exports.cacheComments = async (blogId, comments) => {
     let entry = 'comments' + blogId.toString();
