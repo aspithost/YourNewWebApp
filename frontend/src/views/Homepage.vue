@@ -289,7 +289,7 @@ const ListBlogsCards = defineAsyncComponent(() => import('/src/components/blogs/
 
 const youClicked = ref(false)
 
-const authServer = import.meta.env.VITE_AUTH_SERVER
+const authServer = import.meta.env.VITE_USER_SERVER
 
 // Load Blogs
 const { featuredBlogs, loadFeaturedBlogs } = useGetFeaturedBlogs()
