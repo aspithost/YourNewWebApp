@@ -195,7 +195,7 @@ const youClicked = ref(false)
                 Short answer:
             </h4>
             <p>
-                Because I got hit by a quarter-life crisis, I guess. 
+                Because I hit my quarter-life crisis early, I guess. 
             </p>
             <h4 class="font-bold pt-2">
                 More Serious Answer:
