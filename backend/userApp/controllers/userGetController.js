@@ -38,6 +38,7 @@ exports.findBlogAuthor = async (req, res, next) => {
         const cachedUser = await checkUserCacheLimited(req.query.userId);
         if (!cachedUser) {
             const user = await findUserById(req.query.userId);
+            if (!user) return res.status(404).json();
             const userLimited = {
                 'avatar': user.avatar,
                 'username': user.username

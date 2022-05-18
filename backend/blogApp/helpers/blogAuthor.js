@@ -5,8 +5,12 @@ const axiosUserInstance = axios.create({
 });
 
 const getBlogAuthor = async (userId) => {
-    const res = await axiosUserInstance.get(`/users/findBlogAuthor?userId=${userId}`);
-    return res.data
+    try {
+        const res = await axiosUserInstance.get(`/users/findBlogAuthor?userId=${userId}`);
+        return res.data
+    } catch (err) {
+        return null
+    }
 }
 
 const getBlogAuthors = async (blogs) => {
