@@ -5,8 +5,9 @@ ynwa.conf
 dist*
 dist-ssr*
 Dockerfile*
-node_modules*
+node_modules
 .dockerignore
 .DS_Store*
 .env*
 *.local*
+*.txt*
