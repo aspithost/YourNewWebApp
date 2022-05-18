@@ -148,7 +148,7 @@
                         That's me holding about $20 worth of foreign money.
                     </div>
                     <div v-show="youClicked" class="text-xs sm:text-sm italic font-light group-hover:text-white">
-                        Probably the only time in my life I had a bag full of cash.
+                        Probably the only time in my life I'll ever have a bag full of cash.
                     </div>
                 </div>
             </a>
@@ -174,7 +174,7 @@
             That's me holding about $20 worth of foreign money.
         &lt;/div&gt;
         &lt;div v-show=&quot;youClicked&quot; class=&quot;text-xs sm:text-sm italic font-light group-hover:text-white&quot;&gt;
-            Probably the only time in my life I had a bag full of cash.
+            Probably the only time in my life I'll ever have a bag full of cash.
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/a&gt;
