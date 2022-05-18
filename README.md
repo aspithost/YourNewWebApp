@@ -5,7 +5,7 @@
 You will not find detailed comments within my code itself. If you would like to know more about how I built Your New Web App, be sure to check out [the blog page](https://yournewwebapp.com/blogs "The Latest Coding Guides at Your New Web App") where I write about some of the topics in more detail. 
 
 Your New Web App consists of three self-built apps:
-- A Server-Side Rendered Vue.js App,, and:
+- A Server-Side Rendered Vue.js App, and:
 - Two Express.js REST API's.
 
 If you want to test the code locally, you will need to have instances of both MongoDB and Redis running.
