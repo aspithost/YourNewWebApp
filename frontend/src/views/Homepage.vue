@@ -204,7 +204,9 @@ const youClicked = ref(false)
                 I'm a “self-taught” full-stack web developer who takes great pleasure in designing and building 
                 web applications. In fact, this entire website and all of its — in most cases entirely unnecessary — 
                 quirks show that I enjoy doing all this a little too much. 
-            </p><p>Building this project was the ideal way for me to learn and experiment with full-stack web development. 
+            </p>
+            <p>
+                Building this project was the ideal way for me to learn and experiment with full-stack web development. 
             </p>
             <p>
                 Although I have no formal education in the field, calling myself “self-taught” would be a disservice to 

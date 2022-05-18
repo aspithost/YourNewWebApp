@@ -17,7 +17,8 @@ export default () => {
                 createdUser.value = res.data.user
             }
         } catch (err) {
-            error.value = err.response.data.message
+            error.value = err.response ? err.response.data.message : err.message
+            console.log('errvalue', error.value)
         }
     }
 

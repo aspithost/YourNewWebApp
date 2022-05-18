@@ -1,4 +1,4 @@
-const { getRedisClient }= require('./redis');
+const { getRedisClient } = require('./redis');
 const client = getRedisClient();
 
 exports.cacheBlacklistedUser = async (user) => {

@@ -9,7 +9,7 @@ const { verifyRefreshToken } = require('../helpers/tokens');
 
 exports.findUser = async (req, res, next) => {
     const tokenData = verifyRefreshToken(req.cookies.refreshCookie);
-    if (!tokenData) {
+    if (!tokenData.userId) {
         return next();
     } else {
         // Check user cache
