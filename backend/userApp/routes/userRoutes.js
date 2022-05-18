@@ -10,7 +10,8 @@ const { hasAuth } = require('../middleware/hasAuth');
 // Controllers
 const { deleteUser } = require('../controllers/userDeleteController');
 
-const { autoLogin, 
+const { getUser, 
+    getUserFirstRender,
     checkPasswordHash, 
     findBlogAuthor, 
     logoutUser,
@@ -54,7 +55,12 @@ router.delete('/user/',
 router.get('/getUser', 
     findUser, 
     autoLoginUser, 
-    autoLogin);
+    getUser);
+
+router.get('/getUserFirstRender',
+    findUser, 
+    autoLoginUser, 
+    getUserFirstRender);
 
 router.get('/user/checkPasswordHash/:passwordHash', 
     userLimiter, 

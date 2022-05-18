@@ -9,4 +9,5 @@ exports.autoLogin = (req, res) => {
     const accessToken = generateAccessToken(req.user);
     setRefreshCookie(refreshToken, res);  
     setAccessCookie(accessToken, res);   
+    req.accessToken = accessToken;
 }

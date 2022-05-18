@@ -8,9 +8,20 @@ const { findUserById } = require('../helpers/databaseUser.js');
 
 const { getPasswordHash } = require('../helpers/databasePasswordHash');
 
-exports.autoLogin = async (req, res, next) => {
+exports.getUser = async (req, res, next) => {
     try {
-        return res.status(200).json({ message: 'finished autologin' });
+        return res.status(200).json({ message: 'logged in successfully' });
+    } catch (err) {
+        next (err);
+    }
+}
+
+exports.getUserFirstRender = async (req, res, next) => {
+    try {
+        return res.status(200).json({ 
+            message: 'logged in successfully',
+            accessToken: req.accessToken
+        });
     } catch (err) {
         next (err);
     }
