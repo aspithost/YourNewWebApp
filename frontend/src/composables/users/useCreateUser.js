@@ -18,7 +18,6 @@ export default () => {
             }
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message
-            console.log('errvalue', error.value)
         }
     }
 

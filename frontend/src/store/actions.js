@@ -29,7 +29,6 @@ export const actions = {
             const data = await axiosAuth.get('/users/getUserFirstRender',
                 { headers: { Cookie: `refreshCookie=${refreshToken}` }}
             )
-            console.log('data.data', data.data)
             const accessToken = data.data.accessToken
             if (!accessToken) return
 
