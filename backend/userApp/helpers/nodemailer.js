@@ -19,7 +19,7 @@ exports.sendVerificationEmail = async (user, hash) => {
     });
 
     let mailOptions = {
-        from: '"yournewwebapp" <dontreply@yournewwebapp.com>',
+        from: `"yournewwebapp" ${process.env.NODEMAILER_SENDER}`,
         to: `${user.email}`, 
         subject: 'Activate Your yournewwebapp.com Account',
         text: '',
@@ -50,7 +50,7 @@ exports.sendPasswordEmail = async (user, hash) => {
     });
 
     let mailOptions = {
-        from: '"yournewwebapp" <dontreply@yournewwebapp.com>',
+        from: `"yournewwebapp" ${process.env.NODEMAILER_SENDER}`,
         to: `${user.email}`, 
         subject: 'Reset Your yournewwebapp.com Password',
         text: '',
