@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 const axiosUserInstance = axios.create({
-    baseURL: `${process.env.AUTH_SERVER}/userapi`
+    baseURL: `${process.env.USER_SERVER}/userapi`
 });
 
 const getBlogAuthor = async (userId) => {
