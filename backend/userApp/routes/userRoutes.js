@@ -34,13 +34,13 @@ const rateLimit = require('express-rate-limit');
 const userLimiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 500,
-    message: 'te vaak gozer'
+    message: 'timed out'
 });
 
 const loginLimiter = rateLimit({
     windowMs: 60 * 1000, // 15 minutes
     max: 500,
-    message: 'te vaak gozer'
+    message: 'timed out'
 })
 
 
