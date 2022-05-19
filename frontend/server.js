@@ -77,7 +77,7 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--head-tags-->`, headTags)
             
-            if (newTokens) {
+            if (newTokens && newTokens.length) {
                 const [ newAccessToken, newRefreshToken ] = newTokens;
                 res.cookie('accessCookie', newAccessToken, { 
                     maxAge: 300000, 

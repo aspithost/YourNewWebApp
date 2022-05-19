@@ -10,19 +10,16 @@ const { getPasswordHash } = require('../helpers/databasePasswordHash');
 
 exports.getUser = async (req, res, next) => {
     try {
-        return res.status(200).json({ message: 'logged in successfully' });
-    } catch (err) {
-        next (err);
-    }
-}
-
-exports.getUserFirstRender = async (req, res, next) => {
-    try {
-        return res.status(200).json({ 
-            message: 'logged in successfully',
-            accessToken: req.accessToken,
-            refreshToken: req.refreshToken
-        });
+        return res.status(200).json(
+            req.query.SSR ? 
+            { 
+                message: 'logged in successfully',
+                accessToken: req.accessToken,
+                refreshToken: req.refreshToken
+            } :
+            { 
+                message: 'logged in successfully'
+            });
     } catch (err) {
         next (err);
     }

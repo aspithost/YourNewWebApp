@@ -3,12 +3,10 @@ const { setCookies,
 
 exports.autoLogin = (req, res, next) => {
     if (!req.user) return next();
-    setCookies(req, res)
-    next();
-}
-
-exports.autoLoginSSR = (req, res, next) => {
-    if (!req.user) return next();
-    sendCookies(req);
+    if (req.query.SSR) {
+        sendCookies(req);
+    } else {
+        setCookies(req, res)
+    }
     next();
 }
