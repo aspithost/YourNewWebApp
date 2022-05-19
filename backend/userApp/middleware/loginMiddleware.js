@@ -1,7 +1,7 @@
 const { setCookies, 
     sendCookies } = require('../helpers/autoLogin');
 
-exports.autoLogin = (req, res, next) => {
+exports.loginMiddleware = (req, res, next) => {
     if (!req.user) return next();
     if (req.query.SSR) {
         sendCookies(req);

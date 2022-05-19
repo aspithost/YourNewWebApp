@@ -3,15 +3,14 @@ const express = require('express');
 const router = express.Router();
 
 // Middleware
-const { autoLogin } = require('../middleware/autoLoginUser');
+const { loginMiddleware } = require('../middleware/loginMiddleware');
 const { findUser } = require('../middleware/findUser');
 const { hasAuth } = require('../middleware/hasAuth');
 
 // Controllers
 const { deleteUser } = require('../controllers/userDeleteController');
 
-const { getUser, 
-    getUserFirstRender,
+const { autoLoginUser, 
     checkPasswordHash, 
     findBlogAuthor, 
     logoutUser,
@@ -52,10 +51,10 @@ router.delete('/user/',
 
 
 // GET Controller
-router.get('/loginUser', 
+router.get('/autoLoginUser', 
     findUser, 
-    autoLogin, 
-    getUser);
+    loginMiddleware, 
+    autoLoginUser);
 
 router.get('/user/checkPasswordHash/:passwordHash', 
     userLimiter, 
@@ -109,13 +108,13 @@ router.patch('/verify/:authHash',
 router.post('/createuser', 
     userLimiter, 
     findUser, 
-    autoLogin, 
+    loginMiddleware, 
     createUser);
 
 router.post('/login', 
     loginLimiter, 
     findUser, 
-    autoLogin, 
+    loginMiddleware, 
     loginUser);
 
 router.post('/user/newAuthHash', 
