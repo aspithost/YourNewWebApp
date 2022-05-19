@@ -7,7 +7,10 @@
             <HomepageSidebar />
         </div>
 
-        <div v-show="route.path.match(/(^\/blogs$)|(^\/blogs\/$)|(^\/blogs\/search)/)" class="sticky top-20">
+        <div v-show="route.path.match(/(^\/blogs$)|(^\/blogs\/$)|(^\/blogs\/search)/)" 
+            class="sticky top-20" 
+            :class="{ 'mt-[59px]' : route.path.match(/blogs\/search/)}"
+        >
             <BlogLayout />
         </div>
 
