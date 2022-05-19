@@ -1,15 +1,15 @@
 const { setAccessCookie, 
-    setRefreshCookie } = require('../helpers/cookies');
+    setRefreshCookie } = require('./cookies');
 
-const { generateTokens } = require('../helpers/tokens');
+const { generateTokens } = require('./tokens');
 
 exports.setCookies = (req, res) => {
     const [ accessToken, refreshToken ] = generateTokens(req);
     setAccessCookie(accessToken, res);   
-    setRefreshCookie(refreshToken, res);  
+    setRefreshCookie(refreshToken, res);
 }
 
-exports.sendCookies = (req, res) => {
+exports.sendCookies = (req) => {
     const [ accessToken, refreshToken ] = generateTokens(req);
     req.accessToken = accessToken;
     req.refreshToken = refreshToken;

@@ -4,8 +4,9 @@ import { renderHeadToString } from '@vueuse/head'
 
 export async function render(url, cookiewallCookie, languageCookie, accessToken, refreshToken, manifest) {
     const { app, head, router, store } = createApp()
+
     // Language preferences of user
-    setLanguage(store, languageCookie)
+    if (languageCookie) store.dispatch('storeLanguageDutch', languageCookie)
 
     // Cookiewall on or off
     if (cookiewallCookie) {
@@ -15,7 +16,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     }  
     
     // Authenticate/authorize user on first render. Server Side token only necessary if access token is invalid or not present
-    const newTokens = await getUserData(store, accessToken, refreshToken)
+    const newTokens = await generateTokens(store, accessToken, refreshToken) 
     
     // set the router to the desired URL before rendering
     router.push(url)
@@ -38,16 +39,11 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     return [ html, headTags, preloadLinks, store, newTokens ]
 }
 
-const setLanguage = async (store, languageCookie) => {
-    if (!languageCookie) return
-    await store.dispatch('storeLanguageDutch', languageCookie)
-}
-
-const getUserData = async (store, accessToken, refreshToken) => {
+const generateTokens = async (store, accessToken, refreshToken) => {
     if (accessToken) store.dispatch('verifyUser', accessToken)
     if (!store.state.user && refreshToken) {
         return await store.dispatch('generateTokensServer', refreshToken)
-    }
+    }     
 }
 
 const renderPreloadLinks = (modules, manifest) => {

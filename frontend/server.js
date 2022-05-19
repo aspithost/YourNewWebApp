@@ -65,13 +65,12 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 headTags, 
                 preloadLinks, 
                 store, 
-                newAccessToken ] 
+                newTokens ] 
             = await render(url, cookiewallCookie, languageCookie, accessToken, refreshToken, manifest)
 
             const renderState = `
                 <script>window.__INITIAL_STATE__ = ${serialize(store.state)} </script>
             `
-
             const html = template
                 .replace(`<!--initial-state-->`, renderState)
                 .replace(`<!--app-html-->`, appHtml)

@@ -101,7 +101,7 @@ exports.loginUser = async (req, res, next) => {
                     req.user = user;
                     setCookies(req, res);
                     return res.status(200).json({ 
-                        message: 'ingelogd gino, van harte' 
+                        message: 'logged in successfully!' 
                     });
                 }
             }

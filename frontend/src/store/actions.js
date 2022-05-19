@@ -1,7 +1,6 @@
 import { axiosAuth, axiosAuthCredentials } from '/src/composables/axios'
 import cookies from 'js-cookie'
 import jwt from 'jwt-decode'
-import { verifyRefreshToken } from '../../../backend/userApp/helpers/tokens'
 
 export const actions = {
 
@@ -30,12 +29,12 @@ export const actions = {
             const res = await axiosAuthCredentials.get('/users/getUserFirstRender',
                 { headers: { Cookie: `refreshCookie=${refreshToken}` }}
             )
-            const accessToken = res.data.accessToken
-            const refreshToken = res.data.refreshToken
-            if (!accessToken || !refreshToken) return
+            const newAccessToken = res.data.accessToken
+            const newRefreshToken = res.data.refreshToken
+            if (!newAccessToken || !newRefreshToken) return
 
-            dispatch('verifyUser', accessToken)
-            return [ accessToken, refreshToken ]
+            dispatch('verifyUser', newAccessToken)
+            return [ newAccessToken, newRefreshToken ]
         } catch (err) {
             return err
         }

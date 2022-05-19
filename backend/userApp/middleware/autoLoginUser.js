@@ -9,6 +9,6 @@ exports.autoLogin = (req, res, next) => {
 
 exports.autoLoginSSR = (req, res, next) => {
     if (!req.user) return next();
-    sendCookies(req, res);
+    sendCookies(req);
     next();
 }
