@@ -17,7 +17,7 @@ const { createPasswordHash,
 const { sendVerificationEmail, 
     sendPasswordEmail } = require('../helpers/nodemailer');
 
-const { autoLogin } = require('../helpers/autoLogin');
+const { setCookies } = require('../helpers/autoLogin');
 
 exports.blacklistUser = async (req, res, next) => {
     try {
@@ -99,7 +99,7 @@ exports.loginUser = async (req, res, next) => {
                 // Login User
                 } else {
                     req.user = user;
-                    autoLogin(req, res);
+                    setCookies(req, res);
                     return res.status(200).json({ 
                         message: 'ingelogd gino, van harte' 
                     });

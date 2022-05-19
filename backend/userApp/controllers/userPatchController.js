@@ -1,6 +1,6 @@
 const bcrypt = require('bcrypt');
 
-const { autoLogin } = require('../helpers/autoLogin');
+const { setCookies } = require('../helpers/autoLogin');
 
 const { cacheUser } = require('../helpers/cache');
 
@@ -54,7 +54,7 @@ exports.patchUsername = async (req, res, next) => {
                     req.user = updatedUser;
 
                     // AccessToken issuen met nieuwe gebruikersnaam
-                    autoLogin(req, res);
+                    setCookies(req, res);
                     return res.status(201).json({
                         message: 'Successfully updated your username!',
                         user: updatedUser
