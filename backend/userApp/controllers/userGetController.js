@@ -18,8 +18,6 @@ exports.getUser = async (req, res, next) => {
 
 exports.getUserFirstRender = async (req, res, next) => {
     try {
-        console.log('accesstoken', req.accessToken) 
-        console.log('refreshtoken', req.refreshToken)
         return res.status(200).json({ 
             message: 'logged in successfully',
             accessToken: req.accessToken,

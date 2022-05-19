@@ -74,6 +74,7 @@ exports.getBlogs = async (req, res, next) => {
         // Get blogs from DB
         if (!cachedBlogs) {
             const blogs = await findBlogs(req.query.date);
+            console.log(blogs)
             if (!blogs.length) { 
                 return res.status(404).json();   
 
