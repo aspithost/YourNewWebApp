@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Middleware
-const { autoLoginUser } = require('../middleware/autoLoginUser');
+const { autoLogin, autoLoginSSR } = require('../middleware/autoLoginUser');
 const { findUser } = require('../middleware/findUser');
 const { hasAuth } = require('../middleware/hasAuth');
 
@@ -54,12 +54,12 @@ router.delete('/user/',
 // GET Controller
 router.get('/getUser', 
     findUser, 
-    autoLoginUser, 
+    autoLogin, 
     getUser);
 
 router.get('/getUserFirstRender',
     findUser, 
-    autoLoginUser, 
+    autoLoginSSR, 
     getUserFirstRender);
 
 router.get('/user/checkPasswordHash/:passwordHash', 
@@ -114,13 +114,13 @@ router.patch('/verify/:authHash',
 router.post('/createuser', 
     userLimiter, 
     findUser, 
-    autoLoginUser, 
+    autoLogin, 
     createUser);
 
 router.post('/login', 
     loginLimiter, 
     findUser, 
-    autoLoginUser, 
+    autoLogin, 
     loginUser);
 
 router.post('/user/newAuthHash', 

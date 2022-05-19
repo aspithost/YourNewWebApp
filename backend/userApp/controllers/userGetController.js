@@ -20,7 +20,8 @@ exports.getUserFirstRender = async (req, res, next) => {
     try {
         return res.status(200).json({ 
             message: 'logged in successfully',
-            accessToken: req.accessToken
+            accessToken: req.accessToken,
+            refreshToken: req.refreshToken
         });
     } catch (err) {
         next (err);

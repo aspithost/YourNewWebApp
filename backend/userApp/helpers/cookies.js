@@ -1,17 +1,15 @@
 exports.setRefreshCookie = (refreshToken, res) => {
-    return res.cookie('refreshCookie', refreshToken, { 
-        httpOnly: true, 
+    res.cookie('refreshCookie', refreshToken, { 
+        maxAge: 1209600000,
         secure: true,
-        maxAge: 1209600000, 
-        overwrite: true, 
-        sameSite: 'lax' 
+        sameSite: 'lax',
+        httpOnly: true
     });
 }
 
 exports.setAccessCookie = (accessToken, res) => {
-    return res.cookie('accessCookie', accessToken, { 
+    res.cookie('accessCookie', accessToken, { 
         maxAge: 300000, 
-        overwrite: true, 
         sameSite: 'lax',
         secure: true
     });

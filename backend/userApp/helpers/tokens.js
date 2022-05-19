@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-exports.generateAccessToken = (user) => {
+const generateAccessToken = (user) => {
     return jwt.sign({
         userId: user._id,
         username: user.username,
@@ -12,7 +12,7 @@ exports.generateAccessToken = (user) => {
     });
 }
 
-exports.generateRefreshToken = (userId) => {
+const generateRefreshToken = (userId) => {
     return jwt.sign({
         userId: userId,
     },
@@ -20,6 +20,12 @@ exports.generateRefreshToken = (userId) => {
     {
         expiresIn: '14d'
     });
+}
+
+exports.generateTokens = (req) => {
+    const accessToken = generateAccessToken(req.user);
+    const refreshToken = generateRefreshToken(req.user._id);
+    return [ accessToken, refreshToken ]
 }
 
 exports.verifyRefreshToken = (refreshToken) => { 

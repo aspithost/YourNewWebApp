@@ -77,14 +77,19 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 .replace(`<!--app-html-->`, appHtml)
                 .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--head-tags-->`, headTags)
-
-            //
-            if (newAccessToken) {
+            
+            if (newTokens) {
+                const [ newAccessToken, newRefreshToken ] = newTokens;
                 res.cookie('accessCookie', newAccessToken, { 
                     maxAge: 300000, 
-                    overwrite: true, 
                     sameSite: 'lax',
                     secure: true
+                });
+                res.cookie('refreshCookie', newRefreshToken, {
+                    maxAge: 1209600000,
+                    secure: true,
+                    sameSite: 'lax',
+                    httpOnly: true
                 });
             }
                 

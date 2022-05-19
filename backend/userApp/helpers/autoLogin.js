@@ -1,13 +1,16 @@
 const { setAccessCookie, 
     setRefreshCookie } = require('../helpers/cookies');
 
-const { generateAccessToken,
-    generateRefreshToken } = require('../helpers/tokens');
+const { generateTokens } = require('../helpers/tokens');
 
-exports.autoLogin = (req, res) => {
-    const refreshToken = generateRefreshToken(req.user._id);
-    const accessToken = generateAccessToken(req.user);
-    setRefreshCookie(refreshToken, res);  
+exports.setCookies = (req, res) => {
+    const [ accessToken, refreshToken ] = generateTokens(req);
     setAccessCookie(accessToken, res);   
+    setRefreshCookie(refreshToken, res);  
+}
+
+exports.sendCookies = (req, res) => {
+    const [ accessToken, refreshToken ] = generateTokens(req);
     req.accessToken = accessToken;
+    req.refreshToken = refreshToken;
 }

@@ -1,7 +1,14 @@
-const { autoLogin } = require('../helpers/autoLogin');
+const { setCookies, 
+    sendCookies } = require('../helpers/autoLogin');
 
-exports.autoLoginUser = (req, res, next) => {
+exports.autoLogin = (req, res, next) => {
     if (!req.user) return next();
-    autoLogin(req, res);
+    setCookies(req, res)
+    next();
+}
+
+exports.autoLoginSSR = (req, res, next) => {
+    if (!req.user) return next();
+    sendCookies(req, res);
     next();
 }

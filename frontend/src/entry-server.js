@@ -15,7 +15,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     }  
     
     // Authenticate/authorize user on first render. Server Side token only necessary if access token is invalid or not present
-    const newAccessToken = await getUserData(store, accessToken, refreshToken)
+    const newTokens = await getUserData(store, accessToken, refreshToken)
     
     // set the router to the desired URL before rendering
     router.push(url)
@@ -35,7 +35,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     // request.
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
     
-    return [ html, headTags, preloadLinks, store, newAccessToken ]
+    return [ html, headTags, preloadLinks, store, newTokens ]
 }
 
 const setLanguage = async (store, languageCookie) => {
@@ -46,7 +46,7 @@ const setLanguage = async (store, languageCookie) => {
 const getUserData = async (store, accessToken, refreshToken) => {
     if (accessToken) store.dispatch('verifyUser', accessToken)
     if (!store.state.user && refreshToken) {
-        return await store.dispatch('generateAccessTokenServer', refreshToken)
+        return await store.dispatch('generateTokensServer', refreshToken)
     }
 }
 
