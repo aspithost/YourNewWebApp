@@ -4,7 +4,9 @@ export default () => {
     
     const writtenDate = ref(null)
 
-    const findDate = async (date) => {
+    const findDate = (date) => {
+
+    console.log('date', date)
         let rawDate = (new Date().valueOf() - new Date(date).valueOf()) / (1000 * 60)
         if (rawDate < 0) {
             writtenDate.value = date

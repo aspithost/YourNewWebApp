@@ -2,7 +2,8 @@
     <div class="ynwacomp">
         <h1 class="h1-narrow"> Contact</h1>
         <h2 class="h3-base"> Want to get in touch?</h2>
-        <p class="my-2.5">The easiest way to reach me is to head over to my <a href="" class="link">
+        <p class="my-2.5">The easiest way to reach me is to head over to my <a href="https://linkedin.com/in/abelspithost" 
+            target="_blank" class="link">
             LinkedIn profile</a> and leave me a message. I will try to get back to you as soon as possible.</p>
         <Head>
             <title>Your New Web App - Contact</title>

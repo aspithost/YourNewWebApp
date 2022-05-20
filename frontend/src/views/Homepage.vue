@@ -8,7 +8,7 @@
             <p>
                 Do you want to build a website that's <strong>ultra-fast</strong>, looks <strong>slick</strong> 
                 and scores really well in <strong>SEO</strong> metrics?
-                If so, you're in the right place! 
+                You're in the right place! 
             </p>
             <p>
                 Your New Web App features <strong>free tutorials</strong> — ranging from 
@@ -94,34 +94,6 @@
                 Whether you are a seasoned web developer or just starting out, Your New Web App has something for everyone. 
 
             </p>
-
-            <!-- <p> 
-                This homepage looks pretty slick if I may so myself — shoutout <a href="https://tailwindcss.com/" target="_blank"
-                class="link">Tailwind CSS</a> — 
-                but it's more than that.
-            </p> 
-            <p><strong class="text-ynwa">Your New Web App</strong> is a server-side rendered Single-Page Application.
-                Don't know what that means? Have a look at this <router-link class="link"
-                :to="{ name: 'SingleBlogDetails', params: { id: '1', slug: 'one' }}">blog</router-link> &amp; this
-                <router-link :to="{ name: 'SingleBlogDetails', params: { id: '1', slug: 'one' }}" 
-                class="link">blog</router-link> where I describe 
-                the general concepts!
-            </p>
-            <p>
-                But it's not just front-end bling. YNWA implements server-side caching, Express middleware &amp; other topics that 
-                sound even more boring than the ones I just mentioned.
-            </p>
-            <p>
-                Your New Web App has something for everyone. And you can filter blogs based on your preferences, too! 
-            </p>
-            <p>
-                Want to start off with some back-end content for beginners? I've got you <router-link :to="{ name : 'Search',
-                    params: { tag: ['backend', 'beginner'] }}" class="link">
-                covered</router-link>! More interested in advanced front-end topics instead? 
-                <router-link :to="{ name : 'Search', params: { tag: ['frontend', 'advanced'] }}" 
-                class="link">No problem</router-link>!
-
-            </p> -->
         </section>
 
         <section class="rounded-md pt-6 px-4 lg:px-0">
@@ -131,7 +103,7 @@
             <a @click="youClicked = !youClicked" class="bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa">
                 <div class="rounded-full overflow-hidden">
                     <img 
-                        :src="`${authServer}/avatars/abeluzbekistancropped.jpeg`" 
+                        src="/abeluzbekistancropped.jpeg" 
                         alt="abel"
                         height="48" width="48"
                         loading="lazy"
@@ -157,7 +129,7 @@
 &lt;a @click=&quot;youClicked = !youClicked&quot; class=&quot;bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa&quot;&gt;
     &lt;div class=&quot;rounded-full overflow-hidden&quot;&gt;
         &lt;img 
-            src=&quot;https://yournewwebapp.com/avatars/abeluzbekistancropped.jpeg&quot; 
+            src=&quot;/abeluzbekistancropped.jpeg&quot; 
             alt=&quot;abel&quot;
             height=&quot;48&quot; width=&quot;48&quot;
             loading=&quot;lazy&quot;
@@ -191,15 +163,9 @@ const youClicked = ref(false)
             <h2 class="h2-narrow">
                 Wait, Why Did I Build All Of This?
             </h2>
-            <h4 class="font-bold">
-                Short answer:
-            </h4>
             <p>
                 Because I hit my quarter-life crisis early, I guess. 
             </p>
-            <h4 class="font-bold pt-2">
-                More Serious Answer:
-            </h4>
             <p>
                 I'm a “self-taught” full-stack web developer who takes great pleasure in designing and building 
                 web applications. In fact, this entire website and all of its — in most cases entirely unnecessary — 
