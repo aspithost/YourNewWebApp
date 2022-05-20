@@ -50,7 +50,7 @@
                 />
             </form>
 
-            <p v-if="loginError"> {{ loginError }} </p>
+            <p v-if="loginError" class="font-bold"> {{ loginError }} </p>
 
             <details 
                 v-if="!resetResponse" 

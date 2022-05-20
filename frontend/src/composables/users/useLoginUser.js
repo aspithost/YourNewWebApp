@@ -8,7 +8,7 @@ export default () => {
         try {
             await axiosAuthCredentials.post('/users/login', { email, password })
         } catch (err) {
-            error.value = err.response ? err.response.data.message : err.message
+            error.value = err.response ? err.response.data.message : 'Something went wrong, please try again!'
         }
     }
 
