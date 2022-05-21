@@ -38,8 +38,7 @@
                 Let my experiences building my web app help you build yours!
             </p>
 
-            <p>Head on over to the blog and let's get <router-link :to="{ name: 'Blogs' }" class="link">
-                coding</router-link>!
+            <p>Head on over to the blog and let's get <router-link :to="{ name: 'Blogs' }" class="link">coding</router-link>!
             </p>
         </section>
 
@@ -163,9 +162,6 @@ const youClicked = ref(false)
             <h2 class="h2-narrow">
                 Wait, Why Did I Build All Of This?
             </h2>
-            <p>
-                Because I hit my quarter-life crisis early, I guess. 
-            </p>
             <p>
                 I'm a “self-taught” full-stack web developer who takes great pleasure in designing and building 
                 web applications. In fact, this entire website and all of its — in most cases entirely unnecessary — 
