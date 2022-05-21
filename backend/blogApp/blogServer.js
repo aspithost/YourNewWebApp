@@ -51,7 +51,12 @@ const cookieParser = require('cookie-parser');
 
 app.use((req, res, next) => {
 
-    res.setHeader('Access-control-Allow-Origin', `${process.env.ALLOWED_ORIGIN_HOST}`)
+    const allowedOrigins = `${process.env.ALLOWED_ORIGIN_HOSTS}`
+    const origin = req.headers.origin
+
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader('Access-Control-Allow-Origin', origin)
+    } 
 
     res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
     res.header('Access-Control-Allow-Headers', 'Content-Type');
