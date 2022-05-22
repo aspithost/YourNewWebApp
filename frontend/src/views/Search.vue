@@ -27,9 +27,10 @@ import { useStore } from 'vuex'
 import { Head } from '@vueuse/head'
 
 import useEmitTag from '/src/composables/blogs/useEmitTag'
-import useSearchFilter from '/src/composables/blogs/useSearchFilter'
+import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetBlogs from '/src/composables/blogs/useGetBlogs'
 import useGetSearchedBlogs from '/src/composables/blogs/useGetSearchedBlogs'
+import useSearchFilter from '/src/composables/blogs/useSearchFilter'
 
 const ListBlogs = defineAsyncComponent (() => import('/src/components/blogs/ListBlogs.vue'))
 const ListBlogsCards = defineAsyncComponent (() => import('/src/components/blogs/ListBlogsCards.vue'))
@@ -81,11 +82,7 @@ const allBlogs = computed (() =>  {
             
 // Filtered By Language
 const filteredByLanguage = computed (() => {
-    if (languageDutch.value) {
-        return allBlogs.value.filter(blog => blog.language.includes('Nederlands'))
-    } else {
-        return allBlogs.value.filter(blog => blog.language.includes('English'))
-    }
+    return useFilterByLanguage(allBlogs.value, languageDutch.value)
 })
 
 // Filtered By Tags

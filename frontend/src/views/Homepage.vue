@@ -245,8 +245,9 @@ import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Head } from '@vueuse/head'
 
-import brands from '/src/composables/images/brands'
+import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetFeaturedBlogs from '/src/composables/blogs/useGetFeaturedBlogs'
+import brands from '/src/composables/images/brands'
 import useHighlightJs from '/src/composables/thirdPartyScripts/useHighlightJs'
 
 const ListBlogsCards = defineAsyncComponent(() => import('/src/components/blogs/ListBlogsCards.vue'))
@@ -267,12 +268,7 @@ const store = useStore()
 
 const languageDutch = computed(() => store.state.languageDutch)
 const filteredBlogs = computed (() => {
-    if (!featuredBlogs.value) return []
-    if (languageDutch.value) {
-        return featuredBlogs.value.filter(blog => blog.language.includes('Nederlands'))
-    } else {
-        return featuredBlogs.value.filter(blog => blog.language.includes('English'))
-    }
+    return useFilterByLanguage(featuredBlogs.value, languageDutch.value)
 })
 
 // Provide/inject blogs

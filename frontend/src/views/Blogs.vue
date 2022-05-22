@@ -27,6 +27,7 @@ import { computed , defineAsyncComponent, provide } from 'vue'
 import { useStore } from 'vuex'
 import { Head } from '@vueuse/head'
 
+import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetBlogs from '/src/composables/blogs/useGetBlogs'
 
 const FeaturedBlogs = defineAsyncComponent(() => import('/src/components/featured/FeaturedBlogs.vue'))
@@ -46,11 +47,7 @@ const intersected = () => {
 
 const languageDutch = computed(() => store.state.languageDutch)
 const filteredBlogs = computed (() => {
-    if (languageDutch.value) {
-        return blogs.value.filter(blog => blog.language.includes('Nederlands'))
-    } else {
-        return blogs.value.filter(blog => blog.language.includes('English'))
-    }
+    return useFilterByLanguage(blogs.value, languageDutch.value)
 })
 
 provide('blogs', computed (() => filteredBlogs.value))

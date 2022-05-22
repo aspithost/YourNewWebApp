@@ -29,6 +29,7 @@ import SingleFeaturedBlog from './SingleFeaturedBlog.vue'
 import SingleFeaturedBlogCard from './SingleFeaturedBlogCard.vue'
 import TopStory from './TopStory.vue'
 
+import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetFeaturedBlogs from '/src/composables/blogs/useGetFeaturedBlogs'
 import useHideFeaturedBlogs from '/src/composables/blogs/useHideFeaturedBlogs'
 
@@ -40,12 +41,7 @@ const languageDutch = computed(() => store.state.languageDutch)
 if (!featuredBlogs.value.length) await loadFeaturedBlogs()
 
 const filteredFeaturedBlogs = computed (() => {
-    if (!featuredBlogs.value) return []
-    if (languageDutch.value) {
-        return featuredBlogs.value.filter(blog => blog.language.includes('Nederlands'))
-    } else {
-        return featuredBlogs.value.filter(blog => blog.language.includes('English'))
-    }
+    return useFilterByLanguage(featuredBlogs.value, languageDutch.value)
 })
 
 // Change height SideBar If No Featured Blogs
