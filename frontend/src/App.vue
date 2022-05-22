@@ -35,7 +35,7 @@
 
         </main>
 
-        <footer v-if="!showSidebar" class="pb-4 px-8">
+        <footer v-if="screenSize && !showSidebar" class="pb-4 px-8">
             <MyFooter class="border-t border-gray-300 pt-4 text-sm" />
         </footer>
         
