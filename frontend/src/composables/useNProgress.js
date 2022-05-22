@@ -4,9 +4,9 @@ import { useStore } from 'vuex'
 
 import NProgress from 'nprogress'
 
-import { axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials } from './axios'
+import { axiosUser, axiosUserCredentials, axiosBlog, axiosBlogCredentials } from './axios'
 
-const axiosArray = [axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials]
+const axiosArray = [axiosUser, axiosUserCredentials, axiosBlog, axiosBlogCredentials]
 
 import '/src/nprogress.css'
 

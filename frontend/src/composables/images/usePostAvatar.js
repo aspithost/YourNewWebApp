@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { axiosAuthCredentials } from '../axios'
+import { axiosUserCredentials } from '../axios'
 
 export default () => {
     const error = ref(null)
@@ -7,7 +7,7 @@ export default () => {
 
     const uploadAvatar = async (formData) => {
         try {
-            const res = await axiosAuthCredentials.post('/images/upload', 
+            const res = await axiosUserCredentials.post('/images/upload', 
                 formData, { 
                     headers: { 'Content-Type': 'multipart/form-data'}
                 })

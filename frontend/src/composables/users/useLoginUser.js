@@ -1,12 +1,12 @@
 import { ref } from 'vue'
-import { axiosAuthCredentials } from '../axios'
+import { axiosUserCredentials } from '../axios'
 
 export default () => {
     const error = ref(null)
     
     const loginUser = async (email, password)  => {
         try {
-            await axiosAuthCredentials.post('/users/login', { email, password })
+            await axiosUserCredentials.post('/users/login', { email, password })
         } catch (err) {
             error.value = err.response ? err.response.data.message : 'Something went wrong, please try again!'
         }

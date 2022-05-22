@@ -2,9 +2,9 @@ import { computed, watch } from 'vue'
 import { useStore } from 'vuex'
 import { useRoute } from 'vue-router'
 
-import { axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials } from './index.js'
+import { axiosUser, axiosUserCredentials, axiosBlog, axiosBlogCredentials } from './index.js'
 
-const axiosArray = [axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials]
+const axiosArray = [axiosUser, axiosUserCredentials, axiosBlog, axiosBlogCredentials]
 
 export default () => {
     const store = useStore()

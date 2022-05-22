@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-import { axiosAuthCredentials } from '../axios'
+import { axiosUserCredentials } from '../axios'
 
 export default () => {
 
@@ -8,7 +8,7 @@ export default () => {
 
     const logoutUser = async () => {
         try {
-            await axiosAuthCredentials.get('/users/logout')
+            await axiosUserCredentials.get('/users/logout')
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message
         }    
@@ -16,7 +16,7 @@ export default () => {
 
     const logoutUserAllDevices = async () => {
         try {
-            await axiosAuthCredentials.get('/users/logoutall')
+            await axiosUserCredentials.get('/users/logoutall')
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message
         }

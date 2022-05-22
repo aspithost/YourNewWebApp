@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { axiosAuth } from '../axios'
+import { axiosUser } from '../axios'
 
 export default () => {
 
@@ -7,7 +7,7 @@ export default () => {
 
     const setPassword = async (hash, newPassword, userId) => {
         try {
-            const res = await axiosAuth.patch(`/users/user/passwordWithHash/${hash}`, { newPassword, userId })
+            const res = await axiosUser.patch(`/users/user/passwordWithHash/${hash}`, { newPassword, userId })
             newPasswordResponse.value = res.data.message
         } catch (err) {
             return (err)

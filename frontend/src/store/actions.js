@@ -1,4 +1,4 @@
-import { axiosAuth, axiosAuthCredentials } from '/src/composables/axios'
+import { axiosUser, axiosUserCredentials } from '/src/composables/axios'
 import cookies from 'js-cookie'
 import jwt from 'jwt-decode'
 
@@ -15,7 +15,7 @@ export const actions = {
 
     async generateAccessToken ({ dispatch }) {
         try {
-            await axiosAuthCredentials.get('/users/autoLoginUser');  
+            await axiosUserCredentials.get('/users/autoLoginUser');  
             const accessToken = cookies.get('accessCookie');
             if (!accessToken) return
             dispatch('verifyUser', accessToken)
@@ -26,7 +26,7 @@ export const actions = {
 
     async generateTokensServer ({ dispatch }, refreshToken) {
         try {
-            const res = await axiosAuthCredentials.get('/users/autoLoginUser?SSR=true',
+            const res = await axiosUserCredentials.get('/users/autoLoginUser?SSR=true',
                 { headers: { Cookie: `refreshCookie=${refreshToken}` }}
             )
             const newAccessToken = res.data.accessToken

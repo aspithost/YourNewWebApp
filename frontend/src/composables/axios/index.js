@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const axiosAuth = axios.create({
+const axiosUser = axios.create({
     baseURL: `${import.meta.env.VITE_USER_SERVER}/userapi`,
     timeout: 4000
 });
 
-const axiosAuthCredentials = axios.create({
+const axiosUserCredentials = axios.create({
     baseURL: `${import.meta.env.VITE_USER_SERVER}/userapi`,
     timeout: 4000,
     withCredentials: true,
@@ -23,4 +23,4 @@ const axiosBlogCredentials = axios.create({
 });
 
 
-export { axiosAuth, axiosAuthCredentials, axiosBlog, axiosBlogCredentials }
+export { axiosUser, axiosUserCredentials, axiosBlog, axiosBlogCredentials }
