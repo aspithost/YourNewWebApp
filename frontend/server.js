@@ -1,4 +1,5 @@
 require('dotenv').config();
+const axios = require ('axios');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const fs = require('fs');
@@ -37,11 +38,40 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
     
     app.use('*', async (req, res) => {
         try { 
-            const url = req.originalUrl
-            const cookiewallCookie = req.cookies.functionalCookies
-            const languageCookie = req.cookies.languageDutch
-            const accessToken = req.cookies.accessCookie
-            const refreshToken = req.cookies.refreshCookie
+            const url = req.originalUrl;
+            const cookiewallCookie = req.cookies.functionalCookies;
+            const languageCookie = req.cookies.languageDutch;
+
+            // Check for refresh cookie and generate new access & refresh cookie if present
+            const refreshToken = req.cookies.refreshCookie;
+
+            let accessToken, newRefreshToken
+            if (refreshToken) {
+                try {
+                    const response = await axios.post(`${process.env.USER_SERVER}/userapi/users/autoLoginUser?SSR=true`, {},
+                        { headers : { 'Cookie': `refreshCookie=${refreshToken}` }}
+                    );
+                    accessToken = response.data.accessToken;
+                    newRefreshToken = response.data.refreshToken;                 
+                } catch (err) {
+                    return
+                }
+            }
+
+            // Set Cookies in response
+            if (accessToken && newRefreshToken) {
+                res.cookie('accessCookie', accessToken, { 
+                    maxAge: 300000, 
+                    sameSite: 'lax',
+                    secure: true
+                });
+                res.cookie('refreshCookie', newRefreshToken, {
+                    maxAge: 1209600000,
+                    secure: true,
+                    sameSite: 'lax',
+                    httpOnly: true
+                });
+            }    
 
             let template, manifest, render
             if (!isProd) {
@@ -61,38 +91,24 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 render = require('./dist/server/entry-server.js').render
             }
 
+            // 
             const [appHtml, 
                 headTags, 
                 preloadLinks, 
-                store, 
-                newTokens ] 
-            = await render(url, cookiewallCookie, languageCookie, accessToken, refreshToken, manifest)
+                store ] 
+            = await render(url, cookiewallCookie, languageCookie, accessToken, manifest)
 
             const renderState = `
                 <script>window.__INITIAL_STATE__ = ${serialize(store.state)} </script>
             `
+
             const html = template
                 .replace(`<!--initial-state-->`, renderState)
                 .replace(`<!--app-html-->`, appHtml)
                 .replace(`<!--preload-links-->`, preloadLinks)
-                .replace(`<!--head-tags-->`, headTags)
-            
-            if (newTokens && newTokens.length) {
-                const [ newAccessToken, newRefreshToken ] = newTokens;
-                res.cookie('accessCookie', newAccessToken, { 
-                    maxAge: 300000, 
-                    sameSite: 'lax',
-                    secure: true
-                });
-                res.cookie('refreshCookie', newRefreshToken, {
-                    maxAge: 1209600000,
-                    secure: true,
-                    sameSite: 'lax',
-                    httpOnly: true
-                });
-            }
-                
-            // 6. Send the rendered HTML back.
+                .replace(`<!--head-tags-->`, headTags);  
+
+            // Send the rendered HTML back.
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
         } catch (e) {
             // If an error is caught, let vite fix the stracktrace so it maps back to
@@ -107,7 +123,6 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
 
     return { vite, app }
 }
-
 
 createServer().then(({ app }) => 
     app.listen(process.env.APP_PORT, () => {

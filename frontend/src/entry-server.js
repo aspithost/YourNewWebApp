@@ -1,9 +1,12 @@
-import { createApp } from './main'
 import { renderToString } from 'vue/server-renderer'
 import { renderHeadToString } from '@vueuse/head'
+import { createApp } from './main'
 
-export async function render(url, cookiewallCookie, languageCookie, accessToken, refreshToken, manifest) {
+export async function render(url, cookiewallCookie, languageCookie, accessToken, manifest) {
     const { app, head, router, store } = createApp()
+
+    // Verify user
+    if (accessToken) store.dispatch('verifyUser', accessToken)
 
     // Language preferences of user
     if (languageCookie) store.dispatch('storeLanguageDutch', languageCookie)
@@ -14,10 +17,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
             store.dispatch('allowFunctionalCookies', true)
         } 
     }  
-    
-    // Authenticate/authorize user on first render. Server Side token only necessary if access token is invalid or not present
-    const newTokens = await generateTokens(store, accessToken, refreshToken) 
-    
+
     // set the router to the desired URL before rendering
     router.push(url)
     await router.isReady()
@@ -36,14 +36,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     // request.
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
     
-    return [ html, headTags, preloadLinks, store, newTokens ]
-}
-
-const generateTokens = async (store, accessToken, refreshToken) => {
-    if (accessToken) store.dispatch('verifyUser', accessToken)
-    if (!store.state.user && refreshToken) {
-        return await store.dispatch('generateTokensServer', refreshToken)
-    }     
+    return [ html, headTags, preloadLinks, store ]
 }
 
 const renderPreloadLinks = (modules, manifest) => {
