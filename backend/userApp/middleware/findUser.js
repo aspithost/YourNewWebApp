@@ -8,7 +8,7 @@ const { findUserById } = require('../helpers/databaseUser');
 const { verifyRefreshToken } = require('../helpers/tokens');
 
 exports.findUser = async (req, res, next) => {
-    const tokenData = verifyRefreshToken(req.body.refreshToken ?? req.cookies.refreshCookie);
+    const tokenData = verifyRefreshToken(req.cookies.refreshCookie);
     if (!tokenData.userId) {
         return next();
     } else {
