@@ -15,7 +15,7 @@ export const actions = {
 
     async generateAccessToken ({ dispatch }) {
         try {
-            await axiosUserCredentials.get('/users/autoLoginUser');  
+            await axiosUserCredentials.post('/users/autoLoginUser');  
             const accessToken = cookies.get('accessCookie');
             if (!accessToken) return
             dispatch('verifyUser', accessToken)
@@ -26,8 +26,8 @@ export const actions = {
 
     async generateTokensServer ({ dispatch }, refreshToken) {
         try {
-            const res = await axiosUserCredentials.get('/users/autoLoginUser?SSR=true',
-                { headers: { Cookie: `refreshCookie=${refreshToken}` }}
+            const res = await axiosUserCredentials.post('/users/autoLoginUser?SSR=true',
+                { refreshToken: refreshToken }
             )
             const newAccessToken = res.data.accessToken
             const newRefreshToken = res.data.refreshToken

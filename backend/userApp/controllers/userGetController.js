@@ -8,23 +8,6 @@ const { findUserById } = require('../helpers/databaseUser.js');
 
 const { getPasswordHash } = require('../helpers/databasePasswordHash');
 
-exports.autoLoginUser = async (req, res, next) => {
-    try {
-        return res.status(200).json(
-            req.query.SSR && req.accessToken && req.refreshToken ? 
-            { 
-                message: 'logged in successfully',
-                accessToken: req.accessToken,
-                refreshToken: req.refreshToken
-            } :
-            { 
-                message: 'autologin complete'
-            });
-    } catch (err) {
-        next (err);
-    }
-}
-
 exports.checkPasswordHash = async (req, res, next) => {
     try {
         const passwordHash = await getPasswordHash(req.params.passwordHash);

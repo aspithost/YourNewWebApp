@@ -8,7 +8,7 @@ const axiosUser = axios.create({
 const axiosUserCredentials = axios.create({
     baseURL: `${import.meta.env.VITE_USER_SERVER}/userapi`,
     timeout: 4000,
-    withCredentials: true,
+    withCredentials: true
 });
 
 const axiosBlog = axios.create({

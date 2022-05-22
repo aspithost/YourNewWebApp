@@ -10,8 +10,7 @@ const { hasAuth } = require('../middleware/hasAuth');
 // Controllers
 const { deleteUser } = require('../controllers/userDeleteController');
 
-const { autoLoginUser, 
-    checkPasswordHash, 
+const { checkPasswordHash, 
     findBlogAuthor, 
     logoutUser,
     logoutUserAllDevices } = require('../controllers/userGetController');
@@ -23,7 +22,8 @@ const { activateUser,
     patchRights, 
     patchUsername, } = require('../controllers/userPatchController');
 
-const { createUser, 
+const { autoLoginUser, 
+    createUser, 
     loginUser, 
     newAuthHash, 
     newPasswordHash } = require('../controllers/userPostController');
@@ -51,11 +51,6 @@ router.delete('/user/',
 
 
 // GET Controller
-router.get('/autoLoginUser', 
-    findUser, 
-    loginMiddleware, 
-    autoLoginUser);
-
 router.get('/user/checkPasswordHash/:passwordHash', 
     userLimiter, 
     checkPasswordHash);
@@ -110,6 +105,11 @@ router.post('/createuser',
     findUser, 
     loginMiddleware, 
     createUser);
+
+router.post('/autoLoginUser', 
+    findUser, 
+    loginMiddleware, 
+    autoLoginUser);
 
 router.post('/login', 
     loginLimiter, 

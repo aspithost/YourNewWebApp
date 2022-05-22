@@ -19,6 +19,23 @@ const { sendVerificationEmail,
 
 const { setCookies } = require('../helpers/autoLogin');
 
+exports.autoLoginUser = async (req, res, next) => {
+    try {
+        return res.status(200).json(
+            req.query.SSR && req.accessToken && req.refreshToken ? 
+            { 
+                message: 'logged in successfully',
+                accessToken: req.accessToken,
+                refreshToken: req.refreshToken
+            } :
+            { 
+                message: 'autologin complete'
+            });
+    } catch (err) {
+        next (err);
+    }
+}
+
 exports.blacklistUser = async (req, res, next) => {
     try {
         if (!req.user || req.user.rights < 3) {
@@ -137,7 +154,7 @@ exports.newPasswordHash = async (req, res, next) => {
         } else {
             await deleteOldPasswordHash(user._id)
             const hash = await createPasswordHash(user._id);
-            // await sendPasswordEmail(user, hash.passwordHash)
+            await sendPasswordEmail(user, hash.passwordHash)
             return res.status(201).json({ 
                 message: 'You can now reset your password. Please check your email'
             });
