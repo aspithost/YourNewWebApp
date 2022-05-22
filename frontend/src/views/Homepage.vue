@@ -267,6 +267,7 @@ const store = useStore()
 
 const languageDutch = computed(() => store.state.languageDutch)
 const filteredBlogs = computed (() => {
+    if (!featuredBlogs.value) return []
     if (languageDutch.value) {
         return featuredBlogs.value.filter(blog => blog.language.includes('Nederlands'))
     } else {
