@@ -79,7 +79,7 @@ const numberOfMins = computed (() => {
     }
     // Omit any HTML from blog length
     let filteredCode = useSanitizeHTML(props.blog.content)
-    return Math.ceil((filteredCode.length - codeBlockLength) / 1000)
+    return Math.ceil((filteredCode.length - codeBlockLength) / 1250)
 })
 
 findDate(props.blog.publishDate)
