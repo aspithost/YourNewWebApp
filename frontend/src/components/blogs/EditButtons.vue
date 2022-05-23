@@ -18,7 +18,7 @@ const props = defineProps(['modelValue'])
 const emit = defineEmits(['update:modelValue'])
 
 const buttons = [
-    'Bold', 
+    'Strong', 
     'Italic',
     'Code', 
     'Code Block', 

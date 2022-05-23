@@ -1,6 +1,6 @@
 export default () => {
     const editHTML = (content, type, start, end) => {
-        if (type.match(/(bold)|(italic)|(^code$)|(link)/g)) {
+        if (type.match(/(strong)|(italic)|(^code$)|(link)/g)) {
             content = insertHTML(content, type, start, end)
         } else {
             content = addHTML(content, type, start)
