@@ -24,6 +24,7 @@
                 required
             />
             <Button
+                class="inline-block"
                 :toggled="isPending"
                 label="Change Username"
                 type="submit"

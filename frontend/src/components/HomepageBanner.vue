@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-ynwa bg-opacity-80 flex flex-col h-[400px] md:h-[500px] px-4"> 
+    <div class="bg-[#1d4680] flex flex-col h-[400px] md:h-[500px] px-4"> 
         <h1 class="text-white m-auto text-center font-header text-3xl md:text-4xl font-extrabold">
             Helping You Build Your New Web App.
         </h1>
@@ -14,16 +14,12 @@
             >
                 <Button 
                     :label="`${button}`"
-                    class="[background-color:#FFF] text-ynwa hover:[background-color:#0d9488] hover:[color:#FFF]
-                        hover:active:[background-color:#008983]" 
                 >
                 </Button> 
             </a>
             <router-link :to="{ name: 'Blogs' }">
                 <Button 
                     label="Latest Blogs"
-                    class="[background-color:#FFF] text-ynwa hover:[background-color:#0d9488] hover:[color:#FFF]
-                        hover:active:[background-color:#008983]" 
                 >
                 </Button>                 
             </router-link>

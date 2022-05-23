@@ -55,16 +55,16 @@
             <details 
                 v-if="!resetResponse" 
                 class="input-form rounded-md cursor-pointer pt-2 px-2 
-                    open:border-2 open:border-gray-200 open:shadow-md open:pb-4"
+                     "
             >
                 <summary 
-                    class="h3-base outline-none">
+                    class="h4-base outline-none">
                         Forgot your Password?
                 </summary>
-                <form @submit.prevent="setNewPassword" class="flex flex-col">
+                <form @submit.prevent="setNewPassword">
                     <FormInput
                         v-model="user.resetEmail"
-                        label="Your Email"
+                        label="Email"
                     />
                     <Button 
                         label="Reset Password"

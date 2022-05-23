@@ -45,10 +45,10 @@
         @apply text-gray-600 text-sm italic;
     }
     .input-form {
-        @apply flex flex-col w-2/3 sm:w-1/2 my-2;
+        @apply w-2/3 sm:w-1/2 my-2;
     }
     .input-header {
-        @apply text-gray-800 font-bold sm:text-lg;
+        @apply text-gray-800 font-semibold sm:text-lg;
     }
     .link {
         @apply font-semibold text-ynwa hover:opacity-80 hover:cursor-pointer;
