@@ -1,4 +1,5 @@
 <template>
+    {{ blog.featured }}
     <div :lang="blog.language === 'English' ? 'en' : 'nl'">
         <router-link :to="{ name: 'SingleBlogDetails', params: { id: blog.id, slug: blog.slug }}"
             class="overflow-hidden rounded flex focus:outline-none focus:opacity-80"

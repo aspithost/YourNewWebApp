@@ -1,4 +1,5 @@
 <template>
+{{ blog.featured }}
     <router-link 
         :hreflang="blog.language === 'English' ? 'en' : 'nl'"
         :to="{ name: 'SingleBlogDetails', 

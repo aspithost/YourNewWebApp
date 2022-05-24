@@ -3,7 +3,7 @@ const client = getRedisClient();
 
 exports.cacheBlog = async (blog) => {
     await client.hSet(blog.id.toString(), 'data', JSON.stringify(blog));
-    client.expire(blog.id.toString(), 86400);
+    client.expire(blog.id.toString(), 30);
 }
 
 exports.checkBlogCache = async (paramsId) => {
