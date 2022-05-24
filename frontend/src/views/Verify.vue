@@ -2,7 +2,7 @@
     <div v-if="verified && username" class="ynwacomp">
         <h1 class="h2-base">Congratulations!</h1>
         <p class="text-md">Welcome <b>{{ username }}</b>, you have successfully registered an account with Your New Web App! 
-        You can now login via our <router-link :to="{ name: 'Login' }" class="link">Login page</router-link>. </p>
+        You can now log in via our <router-link :to="{ name: 'Login' }" class="link">Login page</router-link>. </p>
         <p>Happy commenting!</p>
     </div>
 </template>
