@@ -8,7 +8,6 @@
             v-show="!changeAvatar && !changePassword"
             :toggled="changeUsername"
             label="Change Username"
-            class="block"
         />
         <form v-show="changeUsername" @submit.prevent="submitUsername" class="input-form">    
             <FormInput
@@ -33,7 +32,7 @@
 
 
         <div v-if="user.rights >= 2">
-            <Button
+            <ButtonAlt
                 @click="changeAvatar = !changeAvatar; patchError = null; patchResponse = null" 
                 v-show="!changeUsername && !changePassword"
                 :toggled="changeAvatar"

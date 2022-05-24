@@ -14,6 +14,7 @@ import { computed, defineAsyncComponent } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex' 
 
+import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetFeaturedBlogs from '/src/composables/blogs/useGetFeaturedBlogs'
 
 const MostPopularDefault = defineAsyncComponent (() => import('./MostPopularDefault.vue'))
@@ -30,17 +31,10 @@ if (!featuredBlogs.value.length) loadFeaturedBlogs()
 const filteredBlogs = computed (() => { 
     if (!featuredBlogs.value) return
     let blogId = Number(route.path.match(/\d{1,}/g))
-    if (languageDutch.value.toString() === 'true') {
-        return featuredBlogs.value
-            .filter(blog => blog.id !== blogId)
-            .filter(blog => blog.language.includes('Nederlands'))
-            .slice(0,4)
-    } else {
-        return featuredBlogs.value
-            .filter(blog => blog.id !== blogId)
-            .filter(blog => blog.language.includes('English'))
-            .slice(0,4)
-    }
+
+    return useFilterByLanguage(featuredBlogs.value, languageDutch.value)
+        .filter(blog => blog.id !== blogId)
+        .slice(0, 4)
 })
 
 </script>
