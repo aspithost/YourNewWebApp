@@ -26,6 +26,7 @@ exports.findFeaturedBlogs = (date) => {
         publishDate: { $lt: date }, 
         isPublished: true, 
         featured: { $gt: 0 } })
+            .sort('featured')
             .limit(16)
             .lean();
 }
