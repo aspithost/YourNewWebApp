@@ -49,13 +49,11 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
             if (refreshToken) {
                 try {
                     const response = await axios.post(`${process.env.USER_SERVER}/userapi/users/autoLoginUser?SSR=true`, {},
-                        { headers : { 'Cookie': `refreshCookie=${refreshToken}` }}
-                    );
+                        { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
+                    });
                     accessToken = response.data.accessToken;
                     newRefreshToken = response.data.refreshToken;                 
-                } catch (err) {
-                    return
-                }
+                } catch (err) {}
             }
 
             // Set Cookies in response
@@ -108,11 +106,8 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--head-tags-->`, headTags);  
 
-            // Send the rendered HTML back.
             res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
         } catch (e) {
-            // If an error is caught, let vite fix the stracktrace so it maps back to
-            // your actual source code.
             if (!isProd) {
                 vite.ssrFixStacktrace(e)
             }
