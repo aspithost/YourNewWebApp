@@ -30,7 +30,7 @@ if (!featuredBlogs.value.length) loadFeaturedBlogs()
 
 const filteredBlogs = computed (() => { 
     if (!featuredBlogs.value) return
-    let blogId = Number(route.path.match(/\d{1,}/g))
+    let blogId = Number(route.path.match(/\d{1,}/))
 
     return useFilterByLanguage(featuredBlogs.value, languageDutch.value)
         .filter(blog => blog.id !== blogId)
