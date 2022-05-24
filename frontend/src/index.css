@@ -18,7 +18,7 @@
 
 @layer components {
     .codeblock {
-        @apply bg-[#0A313D] whitespace-pre overflow-x-scroll text-sm pb-2 px-4 rounded-md;
+        @apply bg-[#0A313D] whitespace-pre overflow-x-scroll text-sm my-2 pb-2 px-4 rounded-md;
     }
     .code-single-line {
         @apply text-sm bg-ynwa bg-opacity-10 px-1 py-0.5 rounded;

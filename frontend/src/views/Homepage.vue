@@ -124,38 +124,7 @@
                 </div>
             </a>
 
-            <div class="min-h-[476px]"><pre v-if="highlightCode" class="codeblock mt-2"><code>
-&lt;a @click=&quot;youClicked = !youClicked&quot; class=&quot;bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa&quot;&gt;
-    &lt;div class=&quot;rounded-full overflow-hidden&quot;&gt;
-        &lt;img 
-            src=&quot;/abeluzbekistancropped.jpeg&quot; 
-            alt=&quot;abel&quot;
-            height=&quot;48&quot; width=&quot;48&quot;
-            loading=&quot;lazy&quot;
-            class=&quot;h-10 w-10 sm:h-12 sm:w-12 hover:scale-105 duration-300&quot; 
-        &gt;
-    &lt;/div&gt;
-
-    &lt;div class=&quot;flex-col ml-3 sm:ml-4&quot;&gt;
-        &lt;h4 class=&quot;text-sm font-semibold group-hover:text-white&quot;&gt; 
-            abel
-        &lt;/h4&gt;
-
-        &lt;div class=&quot;text-xs sm:text-sm italic font-light group-hover:text-white&quot;&gt; 
-            That's me holding about $20 worth of foreign money.
-        &lt;/div&gt;
-        &lt;div v-show=&quot;youClicked&quot; class=&quot;text-xs sm:text-sm italic font-light group-hover:text-white&quot;&gt;
-            Probably the only time in my life I'll ever have a bag full of cash.
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/a&gt;
-
-&lt;script&gt;
-import { ref } from 'vue'
-
-const youClicked = ref(false)
-&lt;/script&gt;
-            </code></pre></div>
+            <HomepageCodeblock class="min-h-[476px]" v-if="highlightCode" :key="codeblockKey" />
         </section>
 
         <section id="about-me" class="ynwacomp scroll-mt-20 mt-4">
@@ -212,7 +181,6 @@ const youClicked = ref(false)
 
             </div>
 
-
             <p class="text-sm px-4 lg:px-0"><strong>Disclaimer so I don't get sued</strong>: I have no affiliation with any of these 
                 brands whatsoever. I simply used their software to build this website.
             </p>
@@ -245,6 +213,8 @@ import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Head } from '@vueuse/head'
 
+import HomepageCodeblock from '/src/components/HomepageCodeblock.vue'
+
 import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetFeaturedBlogs from '/src/composables/blogs/useGetFeaturedBlogs'
 import brands from '/src/composables/images/brands'
@@ -274,6 +244,11 @@ const filteredBlogs = computed (() => {
 // Provide/inject blogs
 provide('blogs', computed (() => filteredBlogs.value.slice(0,2)))
 provide('numberOfCards', 2)
+
+
+// Re-render codeblock to prevent hydration errors
+const codeblockKey = ref(0)
+onUnmounted(() => codeblockKey.value += 1)
 
 
 // Pre-tag & Code Highlighter

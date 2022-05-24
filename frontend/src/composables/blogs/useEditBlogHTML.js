@@ -42,7 +42,7 @@ const addType = {
     gramembed: '<div class="flex justify-center m-auto pt-2"></div>', 
     image: '<figure class="my-2"><img loading="lazy" src="" alt=""><figcaption></figcaption></figure>',
     ol: '<ol class="list-decimal list-inside space-y-1 marker:font-semibold"></ol>',
-    codeblock: '<pre v-if="highlightCode" class="codeblock my-2"><code></code></pre>',
+    codeblock: '<pre v-if="highlightCode" class="codeblock"><code></code></pre>',
     quote: '<figure class="bg-ynwa bg-opacity-20 rounded-lg px-6 py-2 my-2"><blockquote class="italic font-serif"><p>“ TEXT ”</p></blockquote><figcaption><strong class="text-ynwa"> QUOTE NAAM </strong>,<cite><a href="" target="_blank" class="hover:opacity-70"> QUOTE BRON </a>.</cite></figcaption></figure>',
     quotepic: '<figure class="bg-ynwa bg-opacity-20 rounded-lg px-4 py-2 my-2"><blockquote class="italic font-serif"><p>“ TEXT ”</p></blockquote><div class="flex items-center space-x-3"><img src="" alt="" class="flex-none rounded-full object-cover h-10 w-10 sm:h-12 sm:w-12" width="40" height="40" loading="lazy"><figcaption><div class="font-semibold text-ynwa leading-5">CAPTION ONE</div><div class="text-gray-600 text-sm sm:text-base font-light leading-5">CAPTION TWO</div></figcaption></div></figure>',
     twtembed: '<div class="flex justify-center m-auto max-w-xs sm:max-w-xl md:max-w-full"></div>',
