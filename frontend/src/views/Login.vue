@@ -3,7 +3,7 @@
         <h1 class="h1-narrow">Login</h1>
  
         <div v-if="activationError">
-            <h2 class="font-bold"> 
+            <h2 v-if="!emailResponse && !emailError" class="font-semibold"> 
                 You still have to activate your account. Please check your email!
             </h2>
 
@@ -16,8 +16,9 @@
                     type="submit"
                 />
             </form>
-            <p v-else class="font-bold pt-4"> {{ emailResponse}} </p>
-            <p v-if="emailError" class="font-bold pt-4"> {{ emailError }} </p>
+            
+            <p v-else class="font-semibold pt-4"> {{ emailResponse}} </p>
+            <p v-if="emailError" class="font-semibold pt-4"> {{ emailError }} </p>
         </div>
 
         <div v-else>
@@ -44,9 +45,10 @@
                     required
                 />  
                 <Button
-                    label="Login"
+                    label="Log in"
                     :toggled="isPending"
                     type="submit"
+                    class="mt-2"
                 />
             </form>
 
@@ -66,7 +68,7 @@
                         v-model="user.resetEmail"
                         label="Enter Email"
                     />
-                    <Button 
+                    <ButtonAlt
                         label="Reset Password"
                         :toggled="isPending"
                         type="submit"

@@ -1,9 +1,9 @@
 <template>
     <div v-if="user" class="ynwacomp">
-        <h1 class="h2-narrow"> Welcome {{ user.username }}! </h1>
+        <h1 class="h2-base"> Welcome {{ user.username }}! </h1>
         <p class="mb-4"> Feel free to edit your profile! </p>
 
-        <Button
+        <ButtonAlt
             @click="changeUsername = !changeUsername; patchError = null; patchResponse = null" 
             v-show="!changeAvatar && !changePassword"
             :toggled="changeUsername"
@@ -72,7 +72,7 @@
 
         </div>
 
-        <Button
+        <ButtonAlt
             @click="changePassword = !changePassword; patchError = null; patchResponse = null" 
             v-show="!changeUsername && !changeAvatar"
             :toggled="changePassword"
@@ -113,12 +113,12 @@
         <div v-show="!changeUsername && !changeAvatar && !changePassword">
             <p class="pt-6"> Want to log out instead? Hope to see you again soon! </p>
             <p class="font-bold" v-if="logoutError"> {{ logoutError }}</p>
-            <Button
+            <ButtonAlt
                 @click="logout"
                 label="Logout User"
                 class="block"
             />
-            <Button
+            <ButtonAlt
                 @click="logoutAllDevices"
                 label="Logout User All Devices"
             />

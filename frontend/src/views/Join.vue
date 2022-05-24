@@ -41,7 +41,7 @@
                 />  
                 <Button          
                     :toggled="isPending"
-                    label="Sign Up"
+                    label="Register"
                     type="submit"
                     class="mt-2"
                 />             
