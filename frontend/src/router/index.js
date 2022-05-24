@@ -10,14 +10,12 @@ export default function createRouter(store){
         scrollBehavior (to, from, savedPosition) {
             if ((from.hash || from.name) && to.name === 'Home') {
                 return
-            } else if (to.hash.match(/blogs\/\d/)) {
+            } else {
                 return new Promise (resolve => {
                     setTimeout(() => {
                         resolve({ top: savedPosition.top })
-                    }, 200)
+                    }, 100)
                 })
-            } else {
-                return { top: savedPosition ? savedPosition.top : 0 }
             }
         },
         routes
