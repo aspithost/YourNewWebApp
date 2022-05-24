@@ -23,9 +23,8 @@ exports.findBlogs = (date) => {
 
 exports.findFeaturedBlogs = (date) => {
     return Blog.find({ 
-        publishDate: { $lt: date }, 
-        isPublished: true, 
-        featured: { $gt: 0 } })
+        featured: { $gt: 0 }, 
+        isPublished: true })
             .sort('featured')
             .limit(16)
             .lean();
