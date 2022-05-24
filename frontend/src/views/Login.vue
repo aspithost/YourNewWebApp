@@ -64,7 +64,7 @@
                 <form @submit.prevent="setNewPassword">
                     <FormInput
                         v-model="user.resetEmail"
-                        label="Email"
+                        label="Enter Email"
                     />
                     <Button 
                         label="Reset Password"
