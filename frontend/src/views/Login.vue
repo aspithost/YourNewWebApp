@@ -119,7 +119,7 @@ const login = async () => {
         return router.push({ name: 'User' })
 
     } else if (loginError.value === 'You still have to activate your account!') {
-        return activationError.value = true
+        activationError.value = true
 
     } else {
         user.value.email = null
