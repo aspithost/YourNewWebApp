@@ -67,45 +67,45 @@
                 <p v-if="avatarError"> {{ avatarError }} </p>
                 <p v-if="avatarResponse"> {{ avatarResponse }} </p>         
             </div>
-
-
         </div>
 
-        <ButtonAlt
-            @click="changePassword = !changePassword; patchError = null; patchResponse = null" 
-            v-show="!changeUsername && !changeAvatar"
-            :toggled="changePassword"
-            label="Change Password"
-        />
-        <form v-show="changePassword" @submit.prevent="submitPassword" class="input-form">
-            <FormInput
-                v-model="user.oldPassword"
-                label="Old Password"
-                type="password"
-                required
-            />
-            <FormInput
-                v-model="user.newPassword"
-                label="Set New Password"
-                type="password"
-                minlength="6"
-                maxlength="20"
-                required
-            />
-            <FormInput
-                v-model="user.newPasswordCopy"
-                label="Repeat New Password"
-                type="password"
-                minlength="6"
-                maxlength="20"
-                required
-            />
-            <Button
-                :toggled="isPending"
+        <div>
+            <ButtonAlt
+                @click="changePassword = !changePassword; patchError = null; patchResponse = null" 
+                v-show="!changeUsername && !changeAvatar"
+                :toggled="changePassword"
                 label="Change Password"
-                type="submit"
             />
-        </form>
+            <form v-show="changePassword" @submit.prevent="submitPassword" class="input-form">
+                <FormInput
+                    v-model="user.oldPassword"
+                    label="Old Password"
+                    type="password"
+                    required
+                />
+                <FormInput
+                    v-model="user.newPassword"
+                    label="Set New Password"
+                    type="password"
+                    minlength="6"
+                    maxlength="20"
+                    required
+                />
+                <FormInput
+                    v-model="user.newPasswordCopy"
+                    label="Repeat New Password"
+                    type="password"
+                    minlength="6"
+                    maxlength="20"
+                    required
+                />
+                <Button
+                    :toggled="isPending"
+                    label="Change Password"
+                    type="submit"
+                />
+            </form>
+        </div>
 
         <p v-if="patchResponse || patchError" class="font-bold"> {{ patchError ? patchError : patchResponse.message }} </p>
 
