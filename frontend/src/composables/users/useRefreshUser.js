@@ -1,21 +1,16 @@
-import { ref } from 'vue'
-import { axiosUser } from '../axios'
+import { onMounted, onUnmounted } from 'vue'
+import { useStore } from 'vuex'
 
 export default () => {
+    const store = useStore()
 
-    const error = ref(null)
-    const verified = ref(false)
-    const username = ref(null)
+    onMounted (() => {
+        setInterval(() => {
+            store.dispatch('getAccessToken')
+        }, 250000)  
+    })
 
-    const verifyAccount = async (hash) => {
-        try {
-            const res = await axiosUser.patch(`/users/verify/${hash}`)
-            username.value = res.data.username
-            verified.value = true
-        } catch (err) {
-            error.value = err.response ? err.response.data.message : err.message
-        }
-    }
-
-    return { error, username, verified, verifyAccount }
+    onUnmounted(() => {
+        clearInterval()
+    })
 }
