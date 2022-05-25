@@ -17,6 +17,8 @@ In addition, I use several .env variables throughout the application, which I ha
 APP_PORT=3000
 SSR=true
 
+USER_SERVER=http://localhost:5678
+
 VITE_BLOG_SERVER=http://localhost:1234
 VITE_USER_SERVER=http://localhost:5678
 
@@ -28,7 +30,7 @@ NODE_ENV=production
 ALLOWED_ORIGIN_HOST=http://localhost:3000
 APP_PORT=1234
 
-JWT_ACCESS_KEY=supermagicpassword
+JWT_ACCESS_KEY=supermagicpasswordone
 
 MONGODB_HOST=localhost
 MONGODB_PORT=27017
@@ -40,6 +42,9 @@ REDIS_PORT=6379
 USER_SERVER=http://localhost:5678
 
 // If production
+MONGO_INITDB_ROOT_USERNAME=someuser
+MONGO_INITDB_ROOT_PASSWORD=somepassword
+
 NODE_ENV=production
 ```
 ```
@@ -48,8 +53,8 @@ ALLOWED_ORIGIN_HOST=http://localhost:3000
 
 APP_PORT=5678
 
-JWT_ACCESS_KEY=supermagicpassword
-JWT_REFRESH_KEY=supermagicpassword
+JWT_ACCESS_KEY=supermagicpasswordone
+JWT_REFRESH_KEY=supermagicpasswordtwo
 
 MONGODB_HOST=localhost
 MONGODB_PORT=27017
@@ -59,11 +64,14 @@ REDIS_HOST=localhost
 REDIS_PORT=6379
 
 // If production
+MONGO_INITDB_ROOT_USERNAME=someuser
+MONGO_INITDB_ROOT_PASSWORD=somepassword
+
 NODE_ENV=production
 
 // Nodemailer Configuration.
-NODEMAILER_USER=
-NODEMAILER_PASSWORD=
-NODEMAILER_SENDER=
-SMTP_HOST=
+NODEMAILER_USER=somebody
+NODEMAILER_PASSWORD=something
+NODEMAILER_SENDER=someemail
+SMTP_HOST=somehost
 ```
