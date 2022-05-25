@@ -55,7 +55,7 @@ import NavBar from './components/navbar/NavBar.vue'
 import useAxiosError from './composables/axios/useAxiosError'
 import useNProgress from './composables/useNProgress'
 import useSetScreenWidth from './composables/useSetScreenWidth'
-import useSetUser from './composables/users/useSetUser'
+import useRefreshUser from './composables/users/useRefreshUser'
 
 const AdminBar = defineAsyncComponent(() => import('./components/navbar/AdminBar.vue'))
 const CookieWall = defineAsyncComponent(() => import('./components/CookieWall.vue'))
@@ -75,8 +75,8 @@ const showSidebar = computed (() => screenSize.value >= 768 ? true : false)
 
 useAxiosError()
 useNProgress()
+useRefreshUser()
 useSetScreenWidth()
-useSetUser()
 
 // Homepage Banner Buttons
 const clicked = ref(null)
