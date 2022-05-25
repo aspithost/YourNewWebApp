@@ -9,7 +9,6 @@ export default function createRouter(store){
         history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(),
         scrollBehavior (to, from, savedPosition) {
             // Prevent Router behavior when scrolling homepage
-            console.log('route')
             if (to.name === 'Home') {
                 return
             } else if (savedPosition && savedPosition.top) {
