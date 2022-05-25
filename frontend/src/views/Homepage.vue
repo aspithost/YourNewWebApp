@@ -192,17 +192,17 @@
     <Head>
         <title>YourNewWebApp</title>
         <meta name="description" content="Helping You Build Your New Web App. Let my experiences building my web app help you build yours."/>
-        <meta name="image" content="https://yournewwebapp.com/YNWASquare.svg" />
+        <meta name="image" content="/YNWASquare.svg" />
         <meta property="og:title" content="yournewwebapp" />
         <meta property="og:url" content="https://yournewwebapp.com" />
         <meta property="og:description" content="Helping You Build Your New Web App. Let my experiences building my web app help you build yours." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://yournewwebapp.com/YNWATwitterBanner.svg" />
+        <meta property="og:image" content="/YNWATwitterBanner.svg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="yournewwebapp" />
         <meta name="twitter:description" content="Helping You Build Your New Web App. Let my experiences building my web app help you build yours." />
         <meta name="twitter:site" content="https://yournewwebapp.com"  />
-        <meta name="twitter:image" content="https://yournewwebapp.com/YNWATwitterBanner.svg" />
+        <meta name="twitter:image" content="/YNWATwitterBanner.svg" />
         <link rel="canonical" href="https://yournewwebapp.com" />
     </Head>
 </template>
