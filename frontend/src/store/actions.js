@@ -15,9 +15,10 @@ export const actions = {
 
     async generateAccessToken ({ dispatch }) {
         try {
+            const oldToken = cookies.get('accessCookie')
             await axiosUserCredentials.post('/users/autoLoginUser');  
-            const accessToken = cookies.get('accessCookie');
-            if (!accessToken) return
+            const accessToken = cookies.get('accessCookie')
+            if (!accessToken || (oldToken === accessToken)) return
             dispatch('verifyUser', accessToken)
         } catch (err) {
             return err
