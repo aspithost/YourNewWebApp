@@ -10,6 +10,12 @@ Your New Web App consists of three self-built apps:
 
 If you want to test the code locally, you will need to have instances of both MongoDB and Redis running.
 
+To bundle the front-end app, be sure to set the environment variable to production and run the following commands. You can also find these commands in the package.json file.
+```
+npm run build:server
+npm run build:client
+```
+
 In addition, I use several .env variables throughout the application, which I have not committed to this public Github repo. If you want the app to properly function, make sure to add the following environment variables:
 
 ```
