@@ -37,14 +37,6 @@ export const actions = {
     },
 
 
-    incrementAPICall ({ commit }) {
-        commit('addAPICall')
-    },
-
-    subtractAPICall ({ commit }) {
-        commit('removeAPICall')
-    },
-
     storeAxiosError ({ commit }, value) {
         commit('setAxiosError', value)
     },

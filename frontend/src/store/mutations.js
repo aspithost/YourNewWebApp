@@ -19,14 +19,6 @@ export const mutations = {
     setShowBlogsTraditional (state, value) {
         state.showBlogsTraditional = value
     },
-
-    addAPICall (state) {
-        state.APICalls += 1
-    },
-
-    removeAPICall (state) {
-        state.APICalls -= 1
-    },
     
     setAxiosError (state, value) {
         state.axiosError = value
