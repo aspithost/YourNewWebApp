@@ -224,8 +224,6 @@ const ListBlogsCards = defineAsyncComponent(() => import('/src/components/blogs/
 
 const youClicked = ref(false)
 
-const authServer = import.meta.env.VITE_USER_SERVER
-
 // Load Blogs
 const { featuredBlogs, loadFeaturedBlogs } = useGetFeaturedBlogs()
 
@@ -237,9 +235,7 @@ const intersected = () => {
 const store = useStore()
 
 const languageDutch = computed(() => store.state.languageDutch)
-const filteredBlogs = computed (() => {
-    return useFilterByLanguage(featuredBlogs.value, languageDutch.value)
-})
+const filteredBlogs = computed (() => useFilterByLanguage(featuredBlogs.value, languageDutch.value))
 
 // Provide/inject blogs
 provide('blogs', computed (() => filteredBlogs.value.slice(0,2)))
