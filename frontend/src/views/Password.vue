@@ -1,8 +1,8 @@
 <template>
     <div v-if="user" class="ynwacomp">
         <div v-show="!newPasswordResponse">
-            <h1 class="h1-narrow">Reset Password</h1>
-            <h2 class="h2-narrow">Hello {{ user.username }}, you can now set a new password. </h2>
+            <h1 class="h2-base">Reset Password</h1>
+            <p>Hello <b>{{ user.username }}</b>, you can now set a new password. </p>
             <form @submit.prevent="submitNewPassword" class="input-form">
                 <FormInput
                     v-model="passwordOne"
@@ -29,8 +29,9 @@
             <p v-show="passwordError" class="font-bold"> {{ passwordError }}. </p>
         </div>
         <div v-show="newPasswordResponse"> 
-            <h2 class="h2-narrow">Password successfully updated!</h2>
-            <p>Please proceed to <router-link :to="{ name: 'Login' }" class="font-bold text- hover:opacity-50">Login</router-link></p>
+            <h2 class="h2-base">Password successfully updated!</h2>
+            <p>Please proceed to the <router-link :to="{ name: 'Login' }" class="link">Login</router-link> 
+                page and log in using your new password!</p>
         </div>
     </div>
 </template>
