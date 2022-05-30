@@ -166,7 +166,10 @@ provide('writtenDate', computed(() => writtenDate.value))
 
 </script>
 
-<style>
+<style scoped>
+p {
+    @apply bg-red-400;
+}
 .blog-content h2 {
     @apply text-gray-800 pt-4 text-lg font-bold sm:text-xl;
 }

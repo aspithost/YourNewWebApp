@@ -12,6 +12,7 @@
             <a
                 v-for="(button, index) in ['Get Coding!', 'About YNWA', 'About Me']" 
                 @click="emit('clicked', `#${button.toLowerCase().replace(' ', '-').replace('!', '')}`)"
+                :href="`/#${button.toLowerCase().replace(' ', '-').replace('!', '')}`"
                 :class="{ 'hidden md:contents' : index > 0}"
             >
                 <Button 
