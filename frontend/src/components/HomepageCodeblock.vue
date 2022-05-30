@@ -1,6 +1,6 @@
 <template>
 <pre class="codeblock"><code>
-&lt;a @click=&quot;youClicked = !youClicked&quot; class=&quot;bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa&quot;&gt; 
+&lt;div @click=&quot;youClicked = !youClicked&quot; class=&quot;bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa&quot;&gt; 
     &lt;div class=&quot;rounded-full overflow-hidden&quot;&gt; 
         &lt;img  
             src=&quot;/abeluzbekistancropped.jpeg&quot;  
@@ -23,7 +23,7 @@
             Probably the only time in my life I'll ever have a bag full of cash.  
         &lt;/div&gt;  
     &lt;/div&gt; 
-&lt;/a&gt;  
+&lt;/div&gt;  
 
 &lt;script&gt;  
 import { ref } from 'vue'  

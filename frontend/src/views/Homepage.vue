@@ -99,7 +99,7 @@
             <h3 class="h2-narrow pb-2">
                 Hands-On Code-Alongs!
             </h3>
-            <a @click="youClicked = !youClicked" class="bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa">
+            <div @click="youClicked = !youClicked" class="bg-white p-2 rounded-md shadow-md flex items-center cursor-pointer group hover:bg-ynwa">
                 <div class="rounded-full overflow-hidden">
                     <img 
                         src="/abeluzbekistancropped.jpeg" 
@@ -122,7 +122,7 @@
                         Probably the only time in my life I'll ever have a bag full of cash.
                     </div>
                 </div>
-            </a>
+            </div>
 
             <HomepageCodeblock class="min-h-[476px]" v-if="highlightCode" :key="codeblockKey" />
         </section>
