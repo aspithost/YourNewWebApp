@@ -52,9 +52,10 @@ import { useStore } from 'vuex'
 import HomepageBanner from './components/HomepageBanner.vue'
 import NavBar from './components/navbar/NavBar.vue'
 
-import useAxiosError from './composables/axios/useAxiosError'
 import useNProgress from './composables/useNProgress'
 import useSetScreenWidth from './composables/useSetScreenWidth'
+
+import useAxiosError from './composables/axios/useAxiosError'
 import useRefreshUser from './composables/users/useRefreshUser'
 
 const AdminBar = defineAsyncComponent(() => import('./components/navbar/AdminBar.vue'))

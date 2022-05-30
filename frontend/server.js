@@ -41,35 +41,7 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
             const url = req.originalUrl;
             const cookiewallCookie = req.cookies.functionalCookies;
             const languageCookie = req.cookies.languageDutch;
-
-            // Check for refresh cookie and generate new access & refresh cookie if present
             const refreshToken = req.cookies.refreshCookie;
-
-            let accessToken, newRefreshToken
-            if (refreshToken) {
-                try {
-                    const response = await axios.post(`${process.env.USER_SERVER}/userapi/users/autoLoginUser?SSR=true`, {},
-                        { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
-                    });
-                    accessToken = response.data.accessToken;
-                    newRefreshToken = response.data.refreshToken;                 
-                } catch (err) {}
-            }
-
-            // Set Cookies in response
-            if (accessToken && newRefreshToken) {
-                res.cookie('accessCookie', accessToken, { 
-                    maxAge: 300000, 
-                    sameSite: 'lax',
-                    secure: true
-                });
-                res.cookie('refreshCookie', newRefreshToken, {
-                    maxAge: 1209600000,
-                    secure: true,
-                    sameSite: 'lax',
-                    httpOnly: true
-                });
-            }    
 
             let template, manifest, render
             if (!isProd) {
@@ -93,12 +65,31 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
             const [appHtml, 
                 headTags, 
                 preloadLinks, 
-                store ] 
-            = await render(url, cookiewallCookie, languageCookie, accessToken, manifest)
+                store,
+                accessToken,
+                newRefreshToken ] 
+            = await render(url, cookiewallCookie, languageCookie, refreshToken, manifest);
+
+
+            // Set Cookies in response
+            if (accessToken && newRefreshToken) {
+                res.cookie('accessCookie', accessToken, { 
+                    maxAge: 300000, 
+                    sameSite: 'lax',
+                    secure: true
+                });
+                res.cookie('refreshCookie', newRefreshToken, {
+                    maxAge: 1209600000,
+                    secure: true,
+                    sameSite: 'lax',
+                    httpOnly: true
+                });
+            }    
+
 
             const renderState = `
                 <script>window.__INITIAL_STATE__ = ${serialize(store.state)} </script>
-            `
+            `;
 
             const html = template
                 .replace(`<!--initial-state-->`, renderState)
@@ -106,7 +97,7 @@ async function createServer(isProd = process.env.NODE_ENV === 'production') {
                 .replace(`<!--preload-links-->`, preloadLinks)
                 .replace(`<!--head-tags-->`, headTags);  
 
-            res.status(200).set({ 'Content-Type': 'text/html' }).end(html)
+            res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
         } catch (e) {
             if (!isProd) {
                 vite.ssrFixStacktrace(e)

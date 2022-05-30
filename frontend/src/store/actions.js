@@ -15,10 +15,9 @@ export const actions = {
 
     async generateAccessToken ({ dispatch }) {
         try {
-            const oldToken = cookies.get('accessCookie')
-            await axiosUserCredentials.post('/users/autoLoginUser');  
+            await axiosUserCredentials.post('/users/autoLoginUser') 
             const accessToken = cookies.get('accessCookie')
-            if (!accessToken || (oldToken === accessToken)) return
+            if (!accessToken) return
             dispatch('verifyUser', accessToken)
         } catch (err) {
             return err
@@ -28,6 +27,7 @@ export const actions = {
     async verifyUser ({ commit, dispatch }, accessToken) {
         try {
             const user = jwt(accessToken)
+            if (!user) return
             if (user && (user.exp - (Date.now() / 1000)) < 60) {
                 await dispatch('generateAccessToken')             
             } 

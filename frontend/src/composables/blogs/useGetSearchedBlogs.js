@@ -22,7 +22,7 @@ const loadSearchedBlogs = async (search, intersected) => {
         if (!data.data) {
             return 
         } else if (!blogs.value.length) {
-            blogs.value = [...blogs.value, ...data.data] 
+            blogs.value = data.data 
         } else {
             let newBlogs = data.data
             for (let i = 0; i < newBlogs.length; i++) {

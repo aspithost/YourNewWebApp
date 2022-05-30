@@ -33,7 +33,7 @@ NODE_ENV=production
 ```
 ```
 ## backend/blogApp/.env
-ALLOWED_ORIGIN_HOST=http://localhost:3000
+ALLOWED_ORIGIN_HOSTS=['http://localhost:3000, 'http://anotherhost:2345']
 APP_PORT=1234
 
 JWT_ACCESS_KEY=supermagicpasswordone
@@ -55,7 +55,7 @@ NODE_ENV=production
 ```
 ```
 ## backend/userApp/.env
-ALLOWED_ORIGIN_HOST=http://localhost:3000
+ALLOWED_ORIGIN_HOSTS=['http://localhost:3000', 'http://anotherhost:3456']
 
 APP_PORT=5678
 

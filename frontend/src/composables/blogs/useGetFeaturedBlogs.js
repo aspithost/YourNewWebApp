@@ -5,7 +5,15 @@ const featuredBlogs = ref([])
     
 const loadFeaturedBlogs = async () => {
     try {
-        const data = await axiosBlog.get(`/blogs/featured?date=${Date.now()}`) 
+        const SSR = typeof window === 'undefined'
+
+        let data
+        if (SSR) {
+            data = await axiosBlogSSR.get(`/blogs/featured?date=${Date.now()}`) 
+        } else {
+            data = await axiosBlog.get(`/blogs/featured?date=${Date.now()}`) 
+        }
+
         featuredBlogs.value = data.data
     } catch (err) {
         return err

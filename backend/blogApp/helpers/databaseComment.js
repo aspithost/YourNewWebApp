@@ -27,7 +27,7 @@ exports.findCommentsInstance = (blogId) => {
 
 exports.findNumberOfComments = async (blogId) => {
     const comments = await Comment.find({ blogId: blogId }, '_id').lean();
-    return comments.length
+    return comments ? comments.length : 0
 }
 
 exports.patchComment = (commentId, body) => {

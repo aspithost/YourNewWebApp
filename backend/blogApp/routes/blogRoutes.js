@@ -19,14 +19,14 @@ const { createBlog } = require('../controllers/blogPostController');
 
 // Middleware
 const { autoLoginUser,
-    hasAuth } = require('../middleware/auth');
+    hasAuth } = require('../middleware/hasAuth');
 
 // Rate Limit
 const rateLimit = require('express-rate-limit');
 const searchLimiter = rateLimit({
     windowMs: 60 * 1000, // 15 minutes
     max: 100,
-    message: 'te vaak gozer'
+    message: 'timed out'
 });
 
 

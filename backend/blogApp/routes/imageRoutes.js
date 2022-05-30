@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 // Middleware
-const { autoLoginUser, hasAuth } = require('../middleware/auth');
+const { autoLoginUser, hasAuth } = require('../middleware/hasAuth');
 const { preUpload } = require('../middleware/imageMiddleware');
 
 // Controllers

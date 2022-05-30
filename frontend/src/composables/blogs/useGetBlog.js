@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { axiosBlog } from '../axios'
+import { axiosBlog, axiosBlogSSR } from '/src/composables/axios'
 
 export default () => {
     const blog = ref(null)
@@ -8,11 +8,20 @@ export default () => {
 
     const loadBlog = async (id) => {
         try {
-            const data = await axiosBlog.get(`/blogs/${id}`)
+            const SSR = typeof window === 'undefined'
+
+            let data
+            if (SSR) {
+                data = await axiosBlogSSR.get(`/blogs/${id}`)
+            } else {
+                data = await axiosBlog.get(`/blogs/${id}`)
+            }
+            
             if (data.status === 204) {
                 saved.value = true
                 return
             } 
+
             blog.value = data.data.blog
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message

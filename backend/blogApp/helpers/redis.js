@@ -24,7 +24,7 @@ module.exports = {
 
             await client.connect();
         } catch (err) {
-            console.log('Redis error: ', err)
+            console.log('Error connecting to redis, trying again soon');
         }
     },
     getRedisClient: () => client

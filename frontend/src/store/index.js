@@ -5,9 +5,7 @@ import { mutations } from './mutations'
 const state = () => {
     return {
         acceptFunctionalCookies: false,
-        APICalls: 0,
         languageDutch: false,
-        user: null,
     }
 }
 

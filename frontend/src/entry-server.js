@@ -2,8 +2,24 @@ import { renderToString } from 'vue/server-renderer'
 import { renderHeadToString } from '@vueuse/head'
 import { createApp } from './main'
 
-export async function render(url, cookiewallCookie, languageCookie, accessToken, manifest) {
+import { axiosUserSSR } from '/src/composables/axios'
+
+export async function render(url, cookiewallCookie, languageCookie, refreshToken, manifest) {
     const { app, head, router, store } = createApp()
+
+    // If user has a valid refresh token, generate access token & new refresh token
+    let accessToken, newRefreshToken
+    if (refreshToken) {
+        try {
+            const response = await axiosUserSSR.post(`/users/autoLoginUser?SSR=true`, {},
+                { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
+            })
+            accessToken = response.data.accessToken;
+            newRefreshToken = response.data.refreshToken;                  
+        } catch (err) {
+            console.log('entry-server new tokens error')
+        }
+    }
 
     // Verify user
     if (accessToken) store.dispatch('verifyUser', accessToken)
@@ -36,7 +52,7 @@ export async function render(url, cookiewallCookie, languageCookie, accessToken,
     // request.
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
     
-    return [ html, headTags, preloadLinks, store ]
+    return [ html, headTags, preloadLinks, store, accessToken, newRefreshToken ]
 }
 
 const renderPreloadLinks = (modules, manifest) => {
