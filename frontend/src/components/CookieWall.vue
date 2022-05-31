@@ -159,7 +159,7 @@
                             >
                         </div>
                         <p> 
-                            YourNewWebApp may place cookies to gather anonymized data that shows us which blogs you read, etcetera. 
+                            YourNewWebApp may place cookies to gather anonymized data that shows me which blogs you read, etcetera. 
                             This data <b>is not</b> used for profiling.
                         </p>
                     </div>

@@ -10,7 +10,7 @@
 
     <div class="bg-white border border-gray-200 w-full rounded-md shadow-md mt-2 grid-row-start-2 py-4 px-4 md:px-6 xl:px-8 ">
         <h2 class="h2-narrow pb-3"> Comments </h2>
-        <p>Let us know what you think down below in the comments!</p>
+        <p>Let me know what you think down below in the comments!</p>
         <Suspense>
             <template #default>
                 <ListComments v-if="loadComments" :key="key" />
