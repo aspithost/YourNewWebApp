@@ -6,12 +6,16 @@
 @tailwind base;
 
 @layer base {
+    figure {
+        @apply my-2;
+    }
     p {
         @apply py-2;
     }
     strong {
         @apply font-semibold;
     }
+
 }
 
 @tailwind components;
@@ -64,6 +68,70 @@
     }
     .ynwacomp {
         @apply bg-white rounded-md shadow-md p-4 lg:py-6 lg:px-8 2xl:px-10; 
+    }
+
+    /* List Styling */
+    .blogcontent ol {
+        @apply list-decimal list-inside space-y-1 marker:font-semibold;
+    }
+    .blogcontent ul {
+        @apply list-disc list-inside space-y-1 marker:text-ynwa;
+    }
+    
+
+    /* Quotes Styling */
+    .quote-base {
+        @apply bg-ynwa bg-opacity-20 rounded-lg px-6 py-2;
+    }
+    .quote-base > blockquote {
+        @apply italic font-serif;
+    }
+    .quote-base strong {
+        @apply text-ynwa;
+    }
+    .quote-base cite {
+        @apply hover:opacity-70;
+    }
+
+    .quote-pic {
+        @apply bg-ynwa bg-opacity-20 rounded-lg px-4 py-2 my-2;
+    }
+    .quote-pic > blockquote {
+        @apply italic font-serif;
+    }
+    .quote-pic > div {
+        @apply flex items-center space-x-3;
+    }
+    .quote-pic > div > img {
+        @apply flex-none rounded-full object-cover h-10 w-10 sm:h-12 sm:w-12;
+    }
+    .quote-pic > div > figcaption > div:first-child {
+        @apply font-semibold text-ynwa leading-5;
+    }
+    .quote-pic > div > figcaption > div:nth-child(2) {
+        @apply text-gray-600 text-sm sm:text-base font-light leading-5;
+    }
+    
+    /* Headers Styling */
+    .blog-content h2 {
+        @apply text-gray-800 pt-4 text-lg font-bold sm:text-xl;
+    }
+    .blog-content h3 {
+        @apply text-gray-800 pt-4 font-bold sm:text-lg;
+    }
+    .blog-content h4 {
+        @apply text-gray-800 pt-4 font-semibold sm:text-lg;
+    }
+
+    /* Social Media Embeds */
+    .fb-embed {
+        @apply w-[160px] sm:px-6 py-2;
+    }
+    .ig-embed {
+        @apply flex justify-center m-auto pt-2;
+    }
+    .twt-embed {
+        @apply flex justify-center m-auto max-w-xs sm:max-w-xl md:max-w-full;
     }
 }
 

@@ -68,12 +68,12 @@ export default () => {
 
     // YouTube
     if (!socialMediaScripts.youTube) {
-        if (document.querySelector('.youtube-embed')) {
-            setWrapperLoop('.youtube-embed')
+        if (document.querySelector('.yt-embed')) {
+            setWrapperLoop('.yt-embed')
         }
     } else {
-        if (document.querySelector('.youtube-embed')) {
-            const youtubeEmbeds = document.querySelectorAll('.youtube-embed')
+        if (document.querySelector('.yt-embed')) {
+            const youtubeEmbeds = document.querySelectorAll('.yt-embed')
             youtubeEmbeds.forEach(youtubeEmbed => {
                 if (!youtubeEmbed.dataset.href) {
                     youtubeEmbed.remove()

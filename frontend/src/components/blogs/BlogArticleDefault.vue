@@ -108,7 +108,7 @@ watch(allowCookies, () => {
 
 // Get Embedded Blogs
 const getEmbeddedBlogs = async () => {
-    let frames = document.querySelectorAll('.getEmbeddedBlog')
+    let frames = document.querySelectorAll('.embedded-blog')
     for ( let i = 0; i < frames.length; i++) {
         let {
             blog: embeddedBlog,
@@ -165,15 +165,3 @@ provide('author', computed (() => blog.value?.author))
 provide('writtenDate', computed(() => writtenDate.value))
 
 </script>
-
-<style scoped>
-.blog-content h2 {
-    @apply text-gray-800 pt-4 text-lg font-bold sm:text-xl;
-}
-.blog-content h3 {
-    @apply text-gray-800 pt-4 font-bold sm:text-lg;
-}
-.blog-content h4 {
-    @apply text-gray-800 pt-4 font-semibold sm:text-lg;
-}
-</style>
