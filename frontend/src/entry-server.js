@@ -11,7 +11,7 @@ export async function render(url, cookiewallCookie, languageCookie, refreshToken
     let accessToken, newRefreshToken
     if (refreshToken) {
         try {
-            const response = await axiosUserSSR.post(`/users/autoLoginUser?SSR=true`, {},
+            const response = await axiosUserSSR.post(`/user/autoLogin?SSR=true`, {},
                 { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
             })
             accessToken = response.data.accessToken;

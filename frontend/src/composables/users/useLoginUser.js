@@ -6,7 +6,7 @@ export default () => {
     
     const loginUser = async (email, password)  => {
         try {
-            await axiosUserCredentials.post('/users/login', { email, password })
+            await axiosUserCredentials.post('/user/login', { email, password })
         } catch (err) {
             error.value = err.response ? err.response.data.message : 'Something went wrong, please try again!'
         }

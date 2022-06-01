@@ -70,7 +70,7 @@ const imageRoutes = require('./routes/imageRoutes');
 const userRoutes = require('./routes/userRoutes');
 
 app.use('/userapi/images', imageRoutes);
-app.use('/userapi/users', userRoutes);
+app.use('/userapi/user', userRoutes);
 
 
 // Error Handling

@@ -45,17 +45,17 @@ const loginLimiter = rateLimit({
 
 
 // DELETE Controller
-router.delete('/user/', 
+router.delete('/', 
     findUser, 
     deleteUser);
 
 
 // GET Controller
-router.get('/user/checkPasswordHash/:passwordHash', 
+router.get('/passwordReset/:passwordHash', 
     userLimiter, 
     checkPasswordHash);
 
-router.get('/findBlogAuthor', 
+router.get('/blogAuthor', 
     findBlogAuthor) 
 
 router.get('/logout', 
@@ -63,50 +63,50 @@ router.get('/logout',
     findUser, 
     logoutUser);
 
-router.get('/logoutall',
+router.get('/logoutAll',
     loginLimiter,
     findUser,
     logoutUserAllDevices);
 
 
 // PATCH Controller
-router.patch('/user/avatar', 
+router.patch('/avatar', 
     findUser, 
     hasAuth, 
     patchAvatar);
 
-router.patch('/user/password', 
+router.patch('/password', 
     loginLimiter, 
     findUser, 
     patchPassword);
 
-router.patch('/user/passwordWithHash/:passwordHash', 
+router.patch('/passwordReset/:passwordHash', 
     userLimiter, 
     patchPasswordWithHash);
 
-router.patch('/user/rights', 
+router.patch('/rights', 
     findUser, 
     hasAuth,
     patchRights);
 
-router.patch('/user/username', 
+router.patch('/username', 
     loginLimiter, 
     findUser, 
     patchUsername);
 
-router.patch('/verify/:authHash', 
+router.patch('/activation/:authHash', 
     userLimiter, 
     activateUser);
 
 
 // POST Controller
-router.post('/createuser', 
+router.post('/', 
     userLimiter, 
     findUser, 
     loginMiddleware, 
     createUser);
 
-router.post('/autoLoginUser', 
+router.post('/autoLogin', 
     findUser, 
     loginMiddleware, 
     autoLoginUser);
@@ -117,11 +117,11 @@ router.post('/login',
     loginMiddleware, 
     loginUser);
 
-router.post('/user/newAuthHash', 
+router.post('/verificationEmail', 
     userLimiter, 
     newAuthHash);
 
-router.post('/user/newPasswordHash', 
+router.post('/passwordReset', 
     userLimiter,
     newPasswordHash);
 

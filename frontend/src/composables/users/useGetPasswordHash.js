@@ -6,7 +6,7 @@ export default () => {
 
     const checkPasswordHash = async (hash) => {
         try {
-            const res = await axiosUser.get(`/users/user/checkPasswordHash/${hash}`)
+            const res = await axiosUser.get(`/user/passwordReset/${hash}`)
             user.value = res.data.user
         } catch (err) {
             return (err)    

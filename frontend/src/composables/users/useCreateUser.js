@@ -13,7 +13,7 @@ export default () => {
             } else if (user.password.length < 6) {
                 error.value = 'Password has to be at least 6 characters long!'
             } else {    
-                const res = await axiosUser.post('/users/createuser', user)
+                const res = await axiosUser.post('/user', user)
                 createdUser.value = res.data.user
             }
         } catch (err) {

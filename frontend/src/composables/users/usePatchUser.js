@@ -8,7 +8,7 @@ export default () => {
 
     const patchUsername = async (newUsername, password) => {
         try {
-            const res = await axiosUserCredentials.patch('/users/user/username', { newUsername, password })
+            const res = await axiosUserCredentials.patch('/user/username', { newUsername, password })
             patchResponse.value = res.data
         } catch (err) {
             patchError.value = err.response ? err.response.data.message : err.message
@@ -17,7 +17,7 @@ export default () => {
 
     const patchPassword = async (newPassword, password) => {
         try {
-            const res = await axiosUserCredentials.patch('/users/user/password', { newPassword, password })
+            const res = await axiosUserCredentials.patch('/user/password', { newPassword, password })
             patchResponse.value = res.data
         } catch (err) {
             patchError.value = err.response ? err.response.data.message : err.message
@@ -26,7 +26,7 @@ export default () => {
 
     const patchAvatar = async (avatar) => {
         try {
-            const res = await axiosUserCredentials.patch('/users/user/avatar', { avatar })
+            const res = await axiosUserCredentials.patch('/user/avatar', { avatar })
             patchResponse.value = res.data
         } catch (err) {
             patchError.value = err.response ? err.response.data.message : err.message

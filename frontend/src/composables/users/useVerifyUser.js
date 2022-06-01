@@ -9,7 +9,7 @@ export default () => {
 
     const verifyAccount = async (hash) => {
         try {
-            const res = await axiosUser.patch(`/users/verify/${hash}`)
+            const res = await axiosUser.patch(`/user/activation/${hash}`)
             username.value = res.data.username
             verified.value = true
         } catch (err) {

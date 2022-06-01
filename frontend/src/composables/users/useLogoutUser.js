@@ -8,7 +8,7 @@ export default () => {
 
     const logoutUser = async () => {
         try {
-            await axiosUserCredentials.get('/users/logout')
+            await axiosUserCredentials.get('/user/logout')
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message
         }    
@@ -16,7 +16,7 @@ export default () => {
 
     const logoutUserAllDevices = async () => {
         try {
-            await axiosUserCredentials.get('/users/logoutall')
+            await axiosUserCredentials.get('/user/logoutAll')
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message
         }

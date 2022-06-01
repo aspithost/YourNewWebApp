@@ -7,7 +7,7 @@ export default () => {
 
     const generateVerificationEmail = async (email) => {
         try {
-            const res = await axiosUser.post('/users/user/newAuthHash', { email: email })
+            const res = await axiosUser.post('/user/verificationEmail', { email: email })
             response.value = res.data.message
         } catch (err) {
             error.value = err.response ? err.response.data.message : err.message

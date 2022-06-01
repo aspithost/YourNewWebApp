@@ -7,7 +7,7 @@ export default () => {
 
     const setPassword = async (hash, newPassword, userId) => {
         try {
-            const res = await axiosUser.patch(`/users/user/passwordWithHash/${hash}`, { newPassword, userId })
+            const res = await axiosUser.patch(`/user/passwordReset/${hash}`, { newPassword, userId })
             newPasswordResponse.value = res.data.message
         } catch (err) {
             return (err)
