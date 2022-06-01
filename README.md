@@ -16,7 +16,7 @@ npm run build:server
 npm run build:client
 ```
 
-In addition, I use several .env variables throughout the application, which I have not committed to this public Github repo. If you want the app to properly function, make sure to add the following environment variables:
+In addition, I use several .env variables throughout the application, which I have not committed to this public Github repo. If you want the app to function properly, make sure to add the following environment variables:
 
 ```
 ## frontend/.env
@@ -50,6 +50,7 @@ USER_SERVER=http://localhost:5678
 // If production
 MONGO_INITDB_ROOT_USERNAME=someuser
 MONGO_INITDB_ROOT_PASSWORD=somepassword
+REDIS_PASSWORD=someotherpassword
 
 NODE_ENV=production
 ```
@@ -72,6 +73,7 @@ REDIS_PORT=6379
 // If production
 MONGO_INITDB_ROOT_USERNAME=someuser
 MONGO_INITDB_ROOT_PASSWORD=somepassword
+REDIS_PASSWORD=someotherpassword
 
 NODE_ENV=production
 
