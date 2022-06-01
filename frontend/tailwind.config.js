@@ -9,8 +9,7 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'ynwa': '#0A8983',
-                'ynwa-orange': '#FFB75D'
+                'ynwa': '#0A8983'
             },
             fontFamily: {
                 header: ['Saira Extra Condensed', ...defaultTheme.fontFamily.sans],
