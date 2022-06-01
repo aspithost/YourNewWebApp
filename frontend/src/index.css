@@ -70,6 +70,8 @@
         @apply bg-white rounded-md shadow-md p-4 lg:py-6 lg:px-8 2xl:px-10; 
     }
 
+
+    /* ## CSS Styles for individual blogs. Not possible to use scoped in component due to v-html usage ## */
     /* List Styling */
     .blogcontent ol {
         @apply list-decimal list-inside space-y-1 marker:font-semibold;
