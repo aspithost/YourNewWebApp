@@ -23,8 +23,6 @@ In addition, I use several .env variables throughout the application, which I ha
 APP_PORT=3000
 SSR=true
 
-USER_SERVER=http://localhost:5678
-
 VITE_BLOG_SERVER=http://localhost:1234
 VITE_USER_SERVER=http://localhost:5678
 
