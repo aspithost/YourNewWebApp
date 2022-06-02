@@ -7,7 +7,7 @@ const { deleteUser } = require('../helpers/databaseUser');
 exports.deleteUser = async (req, res, next) => {
     try {
         if (!req.user) {
-            res.status(403).json({message: 'niet eens ingelogd g'});
+            res.status(401).json({message: 'not logged in'});
         } else {
             await Promise.all([
                 deleteUserCache(req.user._id), 
