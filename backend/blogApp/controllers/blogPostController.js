@@ -1,5 +1,4 @@
-const { cacheBlog, 
-    deleteBlogsCache } = require('../helpers/cacheBlog.js');
+const { deleteBlogsCache } = require('../helpers/cacheBlog.js');
 
 const { createBlog } = require('../helpers/databaseBlog');  
 
