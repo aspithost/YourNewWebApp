@@ -5,18 +5,17 @@
             <p> You now have to activate your account. Please check your email!</p>
         </div>
         <div v-else>
-            <h1 class="h1-narrow">Register now!</h1>
+            <h1 class="h1-narrow">Register</h1>
             <p> Why register for YourNewWebApp? To see for yourself how my registration and login systems work of course! 
                 When you register for YourNewWebApp, you'll be able to comment on all of the website's posts. You'll even be able to comment
                 on other comments! And all I need is a valid email.</p>
                 <p>Don't worry, I won't use your e-mail for any marketing purpose whatsoever: YourNewWebApp uses automatic e-mail 
-                verification just to make sure you aren't a Russian bot selling readers on some brand-new pyramid scheme in 
-                the comment section.</p>
+                verification just to make sure you aren't a bot selling fellow commenters on some pyramid scheme.</p>
                 <p>Although you can comment in anonymity, please be aware of the 
-                <router-link :to="{ name: 'TermsOfUse' }" class="link">Terms of Use</router-link>. 
+                <router-link :to="{ name: 'TermsOfZZUse' }" class="link">Terms of Use</router-link>. 
                 Generally speaking, if you're not a troll, please leave a message!</p>
             <p>Already have an account? Please <router-link :to="{ name: 'Login' }" class="link">
-                login</router-link> instead! </p>
+                log in</router-link> instead! </p>
 
             <form @submit.prevent="submitUser" class="input-form">
                 <FormInput 
