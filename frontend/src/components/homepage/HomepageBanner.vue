@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-ynwa bg-opacity-60 flex flex-col h-[400px] px-4"> 
+    <div class="bg-ynwa bg-opacity-70 flex flex-col h-[400px] px-4"> 
         <div class="flex flex-col text-center justify-between items-center h-full">
             <h1 class="text-white font-header text-3xl md:text-4xl font-extrabold mt-28">
                 Helping You Build Your New Web App.
@@ -11,7 +11,7 @@
         <div class="flex flex-wrap justify-center mb-6 md:mb-8">
             <a
                 v-for="(button, index) in ['Get Coding!', 'About YNWA', 'About Me']" 
-                @click="emit('clicked', `#${button.toLowerCase().replace(' ', '-').replace('!', '')}`)"
+                @click="clicked(button)"
                 :href="`/#${button.toLowerCase().replace(' ', '-').replace('!', '')}`"
                 :class="{ 'hidden md:contents' : index > 0}"
             >
@@ -32,4 +32,9 @@
 
 <script setup>
 const emit = defineEmits(['clicked'])
+
+const clicked = (button) => {
+    event.preventDefault()
+    emit('clicked', `#${button.toLowerCase().replace(' ', '-').replace('!', '')}`)
+}
 </script>

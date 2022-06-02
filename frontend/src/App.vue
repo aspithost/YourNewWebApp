@@ -49,7 +49,7 @@ import { computed, defineAsyncComponent, provide, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
-import HomepageBanner from './components/HomepageBanner.vue'
+import HomepageBanner from './components/homepage/HomepageBanner.vue'
 import NavBar from './components/navbar/NavBar.vue'
 
 import useNProgress from './composables/useNProgress'

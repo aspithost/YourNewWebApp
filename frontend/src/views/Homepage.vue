@@ -213,7 +213,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import { Head } from '@vueuse/head'
 
-import HomepageCodeblock from '/src/components/HomepageCodeblock.vue'
+import HomepageCodeblock from '/src/components/homepage/HomepageCodeblock.vue'
 
 import useFilterByLanguage from '/src/composables/blogs/useFilterByLanguage'
 import useGetFeaturedBlogs from '/src/composables/blogs/useGetFeaturedBlogs'
