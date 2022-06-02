@@ -29,9 +29,6 @@ const commentSchema = new Schema({
     }
 }, { timestamps: true });
 
-// commentSchema.pre('remove', /* Code voor verwijderen reference in comments */)
-
-commentSchema.index({ timestamp: -1 });
 const Comment = mongoose.model('SingleComment', commentSchema);
 
 module.exports = Comment
