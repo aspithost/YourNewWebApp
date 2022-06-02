@@ -12,7 +12,7 @@
                 <p>Don't worry, I won't use your e-mail for any marketing purpose whatsoever: YourNewWebApp uses automatic e-mail 
                 verification just to make sure you aren't a bot selling fellow commenters on some pyramid scheme.</p>
                 <p>Although you can comment in anonymity, please be aware of the 
-                <router-link :to="{ name: 'TermsOfZZUse' }" class="link">Terms of Use</router-link>. 
+                <router-link :to="{ name: 'TermsOfUse' }" class="link">Terms of Use</router-link>. 
                 Generally speaking, if you're not a troll, please leave a message!</p>
             <p>Already have an account? Please <router-link :to="{ name: 'Login' }" class="link">
                 log in</router-link> instead! </p>
