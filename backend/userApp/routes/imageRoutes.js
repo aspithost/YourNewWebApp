@@ -2,8 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 // Middleware
-const { findUser } = require('../middleware/findUser');
-const { hasAuth } = require('../middleware/hasAuth');
+// Middleware
+const { findUser, hasAuth } = require('../middleware/authMiddleware');
 const { preUpload } = require('../middleware/imageMiddleware');
 
 // Controllers

@@ -1,3 +1,6 @@
+const { setCookies, 
+    sendCookies } = require('../helpers/autoLogin');
+
 const { cacheUser,
     checkUserCache } = require('../helpers/cache');
 
@@ -32,6 +35,23 @@ exports.findUser = async (req, res, next) => {
         } else {
             req.user = cachedUser;
         }  
+    }
+    next();
+}
+
+exports.hasAuth = (req, res, next) => {
+    if (!req.user || req.user.rights < 2) {
+        return res.status(403).json({ message: 'forbidden' });
+    } 
+    next();
+}
+
+exports.loginMiddleware = (req, res, next) => {
+    if (!req.user) return next();
+    if (req.query.SSR) {
+        sendCookies(req);
+    } else {
+        setCookies(req, res)
     }
     next();
 }

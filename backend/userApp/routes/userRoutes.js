@@ -3,9 +3,7 @@ const express = require('express');
 const router = express.Router();
 
 // Middleware
-const { loginMiddleware } = require('../middleware/loginMiddleware');
-const { findUser } = require('../middleware/findUser');
-const { hasAuth } = require('../middleware/hasAuth');
+const { findUser, hasAuth, loginMiddleware } = require('../middleware/authMiddleware');
 
 // Controllers
 const { deleteUser } = require('../controllers/userDeleteController');
