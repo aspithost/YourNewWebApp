@@ -6,7 +6,7 @@ const { findComment,
 exports.patchComment = async (req, res, next) => {
     try {
         const comment = await findComment(req.params.commentId);
-        if (!comment) return next();
+        if (!comment) return res.status(404).json({ message: 'not found' })
         if (req.user.rights !== 3 && req.user.userId !== comment.userId) {
             return res.status(403).json({ message: 'not your comment' })
         } else {         
