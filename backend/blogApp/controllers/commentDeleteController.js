@@ -9,6 +9,7 @@ const { deleteComment,
 exports.deleteComment = async (req, res, next) => {
     try {
         const comment = await findComment(req.params.commentId);
+        if (!comment) return res.status(404).json({ message: 'not found' });
 
         // Check if comment is nested
         const originalComments = await findComments(comment.blogId);
@@ -20,13 +21,22 @@ exports.deleteComment = async (req, res, next) => {
         // Delete comment
         await deleteComment(req.params.commentId);
 
+        
         // In case of parent, remove child reference in parent
         if (parentComment) {
-            const index = parentComment.comments ? parentComment.comments.indexOf(req.params.commentId) : parentComment.replies.indexOf(req.params.commentId)
-            if (index > -1) {
-                await parentComment.comments ? parentComment.comments.splice(index, 1) : parentComment.replies.splice(index, 1)
-                parentComment.save();
+            const deleteChildReferences = (comments) => {
+                const index = comments.indexOf(req.params.commentId);
+                if (index > -1) {
+                    comments.splice(index, 1);
+                    comments.save();
+                }
             }
+
+            if (parentComment.comments) {
+                deleteChildReferences(parentComment.comments);
+            } else {
+                deleteChildReferences(parentComment.replies);
+            }       
         }
 
         // Delete cache
