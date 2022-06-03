@@ -141,7 +141,7 @@ const deleteCommentEntry = async () => {
         return
     } else {
         if (confirm('Do you really want to delete this comment?')) {
-            await deleteComment(singleComment.value)
+            await deleteComment(singleComment.value._id)
             emit('updateCounter')
         } 
     } 

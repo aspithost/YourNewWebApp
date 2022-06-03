@@ -5,9 +5,9 @@ export default () => {
     const patchError = ref(null)
     const patchResponse = ref(null)
 
-    const patchComment = async(id, content, banned) => {
+    const patchComment = async(commentId, content, banned) => {
         try {
-            const res = await axiosBlogCredentials.patch(`/comments/${id}`, { content, banned })
+            const res = await axiosBlogCredentials.patch(`/comments/comment/${commentId}`, { content, banned })
             patchResponse.value = res.data.comment
         } catch (err) {
             patchError.value = err.response ? err.response.data.message : err.message

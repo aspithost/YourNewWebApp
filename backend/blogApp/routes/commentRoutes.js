@@ -26,7 +26,7 @@ const commentLimiter = rateLimit({
 
 
 // DELETE Controller
-router.delete('/:commentId', 
+router.delete('/comment/:commentId', 
     autoLoginUser, 
     hasAuth,
     deleteComment);
@@ -38,7 +38,7 @@ router.get('/:blogId',
 
 
 // POST  Controller
-router.post('/', 
+router.post('/comment', 
     commentLimiter, 
     autoLoginUser, 
     createComment)
@@ -51,7 +51,7 @@ router.post('/reply/',
 
 
 // PATCH Controller
-router.patch('/:commentId', 
+router.patch('/comment/:commentId', 
     commentLimiter, 
     autoLoginUser, 
     patchComment);

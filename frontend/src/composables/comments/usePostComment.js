@@ -18,7 +18,7 @@ export default () => {
                 const res = await axiosBlogCredentials.post(`/comments/reply`, comment)
                 postResponse.value = res.data
             } else {
-                const res = await axiosBlogCredentials.post(`/comments`, comment)
+                const res = await axiosBlogCredentials.post(`/comments/comment`, comment)
                 postResponse.value = res.data
             } 
         } catch (err) {
