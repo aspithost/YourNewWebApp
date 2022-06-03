@@ -24,14 +24,6 @@ exports.deleteComment = async (req, res, next) => {
         
         // In case of parent, remove child reference in parent
         if (parentComment) {
-            const deleteChildReferences = (comments) => {
-                const index = comments.indexOf(req.params.commentId);
-                if (index > -1) {
-                    comments.splice(index, 1);
-                    comments.save();
-                }
-            }
-
             if (parentComment.comments) {
                 deleteChildReferences(parentComment.comments);
             } else {
@@ -69,3 +61,11 @@ const deleteNestedComments = async (comment) => {
         }
     }
 }       
+
+const deleteChildReferences = (comments) => {
+    const index = comments.indexOf(req.params.commentId);
+    if (index > -1) {
+        comments.splice(index, 1);
+        comments.save();
+    }
+}
