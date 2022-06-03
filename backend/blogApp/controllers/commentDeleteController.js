@@ -11,7 +11,7 @@ exports.deleteComment = async (req, res, next) => {
         const comment = await findComment(req.params.commentId);
 
         // Check if comment is nested
-        const originalComments = await findComments(req.params.blogId);
+        const originalComments = await findComments(comment.blogId);
         const parentComment = await getParentComment(originalComments, req.params.commentId);
 
         // Delte all nested comments

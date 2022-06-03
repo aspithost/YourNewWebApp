@@ -7,7 +7,7 @@ export default () => {
 
     const deleteComment = async (comment) => {
         try {
-            const res = await axiosBlogCredentials.delete(`/comments/${comment._id}/${comment.blogId}`)
+            const res = await axiosBlogCredentials.delete(`/comments/${comment._id}`)
             deleteResponse.value = res.data.message
         } catch (err) {
             deleteError.value = err.response ? err.response.data.message : err.message

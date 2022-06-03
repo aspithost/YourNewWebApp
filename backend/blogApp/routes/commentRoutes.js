@@ -26,7 +26,7 @@ const commentLimiter = rateLimit({
 
 
 // DELETE Controller
-router.delete('/:commentId/:blogId', 
+router.delete('/:commentId', 
     autoLoginUser, 
     hasAuth,
     deleteComment);
