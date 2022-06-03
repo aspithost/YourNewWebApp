@@ -14,7 +14,7 @@ const { createComment,
 
 // Middleware
 const { autoLoginUser, 
-    hasAuth } = require('../middleware/hasAuth');
+    hasAuth } = require('../middleware/authMiddleware');
 
 // Rate Limiter
 const rateLimit = require('express-rate-limit');

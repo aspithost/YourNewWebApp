@@ -19,7 +19,7 @@ const { createBlog } = require('../controllers/blogPostController');
 
 // Middleware
 const { autoLoginUser,
-    hasAuth } = require('../middleware/hasAuth');
+    hasAuth } = require('../middleware/authMiddleware');
 
 // Rate Limit
 const rateLimit = require('express-rate-limit');
