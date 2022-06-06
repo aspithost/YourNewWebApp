@@ -11,9 +11,8 @@
             :toggled="isPending"
             type="submit"
         />
-        <p v-if="postError" class="my-2 font-bold"> {{ postError }} </p>
-        <p v-if="postResponse" class="my-2 font-bold">Thanks for sharing!</p>
     </form>
+    <p v-if="postError" class="my-2 font-semibold"> {{ postError }} </p>
 </template>
 
 <script setup>
