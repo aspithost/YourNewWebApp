@@ -14,13 +14,11 @@ const getBlogAuthor = async (userId) => {
 }
 
 const getBlogAuthors = async (blogs) => {
-    const userIds = [];
-    blogs.forEach(blog => userIds.push(blog.user));
 
-    const userIdsSet = new Set();
-    userIds.forEach(userId => userIdsSet.add(userId));
+    const userIds = new Set();
+    blogs.forEach(blog => userIdsSet.add(blog.user));
 
-    for (let userId of userIdsSet) {
+    for (let userId of userIds) {
         const user = await getBlogAuthor(userId);
         userIds.forEach((usrId, index) => {
             if (usrId === userId) {
