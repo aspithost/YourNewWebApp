@@ -16,7 +16,7 @@ const findBlogAuthor = async (userId) => {
 const findBlogAuthors = async (blogs) => {
 
     const userIds = new Set();
-    blogs.forEach(blog => userIdsSet.add(blog.user));
+    blogs.forEach(blog => userIds.add(blog.user));
 
     for (let userId of userIds) {
         const user = await findBlogAuthor(userId);
