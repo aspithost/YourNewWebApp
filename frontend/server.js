@@ -1,5 +1,4 @@
 require('dotenv').config();
-const axios = require ('axios');
 const cookieParser = require('cookie-parser');
 const express = require('express');
 const fs = require('fs');
