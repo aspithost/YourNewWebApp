@@ -1,5 +1,5 @@
-const { getBlogAuthor,
-    getBlogAuthors } = require('../helpers/blogAuthor')
+const { findBlogAuthor,
+    findBlogAuthors } = require('../helpers/blogAuthor')
 
 const { cacheBlog, 
     cacheBlogs,
@@ -37,7 +37,7 @@ exports.getBlog = async (req, res, next) => {
 
             // Get blog author
             } else {
-                dbBlog.author = await getBlogAuthor(dbBlog.user);
+                dbBlog.author = await findBlogAuthor(dbBlog.user);
 
                 // Find number of comments
                 let num = await checkNumberOfCommentsCache(dbBlog.id);
@@ -79,7 +79,7 @@ exports.getBlogs = async (req, res, next) => {
 
             // Get blog authors
             } else {
-                await getBlogAuthors(blogs);
+                await findBlogAuthors(blogs);
 
                 // Append number of comments to  blog
                 for (i = 0; i < blogs.length; i++) {
@@ -109,7 +109,7 @@ exports.getFeaturedBlogs = async (req, res, next) => {
         if (!cachedFeaturedBlogs) {
             const blogs = await findFeaturedBlogs(req.query.date);
 
-            await getBlogAuthors(blogs);    
+            await findBlogAuthors(blogs);    
 
             cacheFeaturedBlogs(blogs);
             return res.status(200).json(blogs);
@@ -125,7 +125,7 @@ exports.getSavedBlog = async (req, res, next) => {
     try {
         const dbBlog = await findBlogById(req.params.id);
 
-        dbBlog.author = await getBlogAuthor(dbBlog.user);
+        dbBlog.author = await findBlogAuthor(dbBlog.user);
 
         return res.status(200).json({ blog: dbBlog })
     } catch (err) {
@@ -137,7 +137,7 @@ exports.getSavedBlogs = async (req, res, next) => {
     try {
         const blogs = await findSavedBlogs(req.query.date);
 
-        await getBlogAuthors(blogs);
+        await findBlogAuthors(blogs);
 
         return res.status(200).json(blogs);
     } catch (err) {
@@ -149,7 +149,7 @@ exports.getScheduledBlogs = async (req, res, next) => {
     try {
         const blogs = await findScheduledBlogs(req.query.date);
 
-        await getBlogAuthors(blogs);
+        await findBlogAuthors(blogs);
 
         return res.status(200).json(blogs);
     } catch (err) {
@@ -161,7 +161,7 @@ exports.getSearchedBlogs = async (req, res, next) => {
     try {
         const blogs = await findSearchedBlogs(req.query.date, req.query.search);
         
-        await getBlogAuthors(blogs);
+        await findBlogAuthors(blogs);
 
         // Append number of comments to  blog
         for (i = 0; i < blogs.length; i++) {
