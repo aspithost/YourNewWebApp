@@ -16,9 +16,7 @@ export async function render(url, cookiewallCookie, languageCookie, refreshToken
             })
             accessToken = response.data.accessToken;
             newRefreshToken = response.data.refreshToken;                  
-        } catch (err) {
-            return
-        }
+        } catch (err) {}
     }
 
     // Verify user
