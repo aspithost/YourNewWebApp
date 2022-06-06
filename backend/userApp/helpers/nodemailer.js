@@ -27,7 +27,7 @@ exports.sendVerificationEmail = async (user, hash) => {
     }
 
     transporter.sendMail(mailOptions, (error) => {
-        if (error) return console.log(error);
+        if (error) return error;
     });
 } 
 
