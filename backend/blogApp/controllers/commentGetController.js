@@ -29,19 +29,8 @@ exports.getComments = async (req, res, next) => {
                     const populatedCommentsInstance = await dbCommentsInstance.populate('comments');
 
                     // Loop to populate replies
-                    let numberOfComments = 0
-                    const populateComments = async (comments) => {
-                        for (let i = 0; i < comments.length; i++) {  
-                            numberOfComments += 1;
-                            if (comments[i].replies.length) {
-                                await comments[i].populate('replies')
-                                await populateComments(comments[i].replies)
-                            } 
-                        }
-                        return comments
-                    }
-                    
-                    const commentsArray = await populateComments(populatedCommentsInstance.comments);
+                    const [ numberOfComments, commentsArray ] = await getPopulatedComments(populatedCommentsInstance.comments);
+
                     // Alles cachen
                     cacheComments(req.params.blogId, commentsArray);
                     cacheNumberOfComments(req.params.blogId, numberOfComments);
@@ -59,4 +48,24 @@ exports.getComments = async (req, res, next) => {
     } catch (err) {
         next (err);
     }
+}
+
+const getPopulatedComments = async (comments) => {
+
+    let numberOfComments = 0;
+
+    const populateComments = async (comments) => {
+        for (let i = 0; i < comments.length; i++) {  
+            numberOfComments += 1;
+            if (comments[i].replies.length) {
+                await comments[i].populate('replies')
+                await populateComments(comments[i].replies)
+            } 
+        }
+        return comments     
+    }
+
+    await populateComments(comments)
+
+    return [ numberOfComments, comments ]
 }
