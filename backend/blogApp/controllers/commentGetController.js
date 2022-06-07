@@ -30,6 +30,16 @@ exports.getComments = async (req, res, next) => {
 
                     // Loop to populate replies
                     let numberOfComments = 0
+                    const populateComments = async (comments) => {
+                        for (let i = 0; i < comments.length; i++) {  
+                            numberOfComments += 1;
+                            if (comments[i].replies.length) {
+                                await comments[i].populate('replies')
+                                await populateComments(comments[i].replies)
+                            } 
+                        }
+                        return comments
+                    }
                     
                     const commentsArray = await populateComments(populatedCommentsInstance.comments);
                     // Alles cachen
@@ -49,15 +59,4 @@ exports.getComments = async (req, res, next) => {
     } catch (err) {
         next (err);
     }
-}
-
-const populateComments = async (comments) => {
-    for (let i = 0; i < comments.length; i++) {  
-        numberOfComments += 1;
-        if (comments[i].replies.length) {
-            await comments[i].populate('replies')
-            await populateComments(comments[i].replies)
-        } 
-    }
-    return comments
 }
