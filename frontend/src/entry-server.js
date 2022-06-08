@@ -8,16 +8,7 @@ export async function render(url, cookiewallCookie, languageCookie, refreshToken
     const { app, head, router, store } = createApp()
 
     // If user has a valid refresh token, generate access token & new refresh token
-    let accessToken, newRefreshToken
-    if (refreshToken) {
-        try {
-            const response = await axiosUserSSR.post(`/user/autoLogin?SSR=true`, {},
-                { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
-            })
-            accessToken = response.data.accessToken;
-            newRefreshToken = response.data.refreshToken;                  
-        } catch (err) {}
-    }
+    const [ accessToken, newRefreshToken ] = await generateNewTokens(refreshToken)
 
     // Verify user
     if (accessToken) store.dispatch('verifyUser', accessToken)
@@ -51,6 +42,18 @@ export async function render(url, cookiewallCookie, languageCookie, refreshToken
     const preloadLinks = renderPreloadLinks(ctx.modules, manifest)
     
     return [ html, headTags, preloadLinks, store, accessToken, newRefreshToken ]
+}
+
+const generateNewTokens = async (refreshToken) => {
+    if (!refreshToken) return []
+    try {
+        const response = await axiosUserSSR.post(`/user/autoLogin?SSR=true`, {},
+            { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
+        })
+        return [ response.data.accessToken, response.data.refreshToken ]
+    } catch (err) {
+        return []
+    }
 }
 
 const renderPreloadLinks = (modules, manifest) => {
