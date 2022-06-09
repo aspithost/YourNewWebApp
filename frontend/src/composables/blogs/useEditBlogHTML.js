@@ -51,9 +51,9 @@ const addType = {
 } 
 
 const insertType = {
-    bold: {
-        insert1: '<b>',
-        insert2: '</b>'
+    strong: {
+        insert1: '<strong>',
+        insert2: '</strong>'
     }, 
     italic: {
         insert1: '<i>',
