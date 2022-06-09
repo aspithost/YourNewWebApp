@@ -51,7 +51,7 @@ const generateNewTokens = async (refreshToken) => {
             { headers : { 'Cookie': `refreshCookie=${refreshToken}` }
         })
         return [ response.data.accessToken, response.data.refreshToken ]
-    } catch (err) {
+    } catch {
         return []
     }
 }

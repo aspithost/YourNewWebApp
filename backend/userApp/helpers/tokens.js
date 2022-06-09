@@ -31,7 +31,5 @@ exports.generateTokens = (req) => {
 exports.verifyRefreshToken = (refreshToken) => { 
     try {
         return jwt.verify(refreshToken, process.env.JWT_REFRESH_KEY);
-    } catch (err) {
-        return err;
-    }
+    } catch {}
 }
