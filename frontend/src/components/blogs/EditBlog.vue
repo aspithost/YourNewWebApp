@@ -114,7 +114,7 @@
                         type="button"
                     />
                     
-                    <div v-show="preview" v-html="blog.content" class="preview px-4 py-2 my-2 border text-default h-96 overflow-auto"></div>
+                    <div v-show="preview" v-html="blog.content" class="blog-content px-4 py-2 my-2 border text-default h-96 overflow-auto"></div>
                 </div>
 
             </div>
@@ -356,18 +356,3 @@ onBeforeRouteLeave ((to, from, next) => {
 }) 
 
 </script>
-
-<style>
-p > a {
-    @apply font-semibold text-ynwa hover:cursor-pointer hover:opacity-80;
-}
-.preview h2 {
-    @apply text-gray-800 pt-2 text-lg font-bold sm:text-xl;
-}
-.preview h3 {
-    @apply text-gray-800 pt-4 font-bold sm:text-lg;
-}
-.preview h4 {
-    @apply text-gray-800 pt-4 font-semibold sm:text-lg;
-}
-</style>
