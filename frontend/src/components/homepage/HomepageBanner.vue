@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-ynwa bg-opacity-70 flex flex-col h-[400px] px-4"> 
+    <div class="bg-[#FFAE4E] bg-opacity-90 flex flex-col h-[400px] px-4"> 
         <div class="flex flex-col text-center justify-between items-center h-full">
             <h1 class="text-white font-header text-3xl md:text-4xl font-extrabold mt-28">
                 Helping You Build Your New Web App.
@@ -15,10 +15,7 @@
                 :href="`/#${button.toLowerCase().replace(' ', '-').replace('!', '')}`"
                 :class="{ 'hidden md:contents' : index > 0}"
             >
-                <Button 
-                    :label="`${button}`"
-                >
-                </Button> 
+                <Button :label="`${button}`" />
             </a>
             <router-link :to="{ name: 'Blogs' }">
                 <Button 
