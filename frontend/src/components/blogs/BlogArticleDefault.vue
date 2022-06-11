@@ -87,7 +87,7 @@ const blogServer = import.meta.env.VITE_BLOG_SERVER
 const store = useStore()
 
 // Get blog date
-const { writtenDate, findDate } = useGetBlogDate()
+const { formattedDate, findDate } = useGetBlogDate()
 
 findDate(blog.value.publishDate)
 
@@ -95,14 +95,6 @@ findDate(blog.value.publishDate)
 // Get Social Media Scripts
 onMounted (() => {
     useGetSocialMediaScripts()
-})
-
-// If user accepts cookies, run social media scripts again
-const allowCookies = computed (() => store.state.acceptFunctionalCookies)
-watch(allowCookies, () => {
-    if (allowCookies.value) {
-        useGetSocialMediaScripts()
-    }
 })
 
 
@@ -142,7 +134,7 @@ const listenToClicks = (event) => {
 }
 
 
-// Listen to NoSocialsDiv Clicks
+// Listen to NoSocialsWrapper Clicks
 onMounted (() => {
     if (document.querySelector('.no-socials-div')) {
         document.querySelectorAll('.no-socials-div').forEach(btn => {
@@ -162,6 +154,6 @@ onMounted (() => {
 })
 
 provide('author', computed (() => blog.value?.author))
-provide('writtenDate', computed(() => writtenDate.value))
+provide('formattedDate', computed(() => formattedDate.value))
 
 </script>

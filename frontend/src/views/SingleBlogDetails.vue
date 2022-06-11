@@ -46,7 +46,7 @@
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, onMounted, provide, ref } from 'vue'
+import { computed, defineAsyncComponent, onMounted, provide, ref, watch } from 'vue'
 import { onBeforeRouteUpdate, useRoute, useRouter } from 'vue-router'
 import { Head } from '@vueuse/head'
 import { useStore } from 'vuex'
@@ -109,6 +109,15 @@ onBeforeRouteUpdate ( async (to) => {
     to.params.user = props.user
     await loadBlog(to.params.id)
     key.value += 1
+})
+
+
+// If user accepts cookies, re-load blog
+const allowCookies = computed (() => store.state.acceptFunctionalCookies)
+watch(allowCookies, () => {
+    if (allowCookies.value) {
+        key.value += 1
+    }
 })
  
 
