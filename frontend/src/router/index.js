@@ -13,6 +13,7 @@ export default function createRouter(store){
                 return
             } else if (savedPosition && savedPosition.top) {
                 return new Promise (resolve => {
+                    // Wait for dynamic content to load before scrolling
                     setTimeout(() => {
                         resolve({ top: savedPosition.top })
                     }, 200)
