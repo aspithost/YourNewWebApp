@@ -6,7 +6,6 @@
         placeholder="Find a blogpost!" 
         type="search"
     />
-    <p v-if="blogsError || searchError" class="font-semibold px-2 lg:px-0"> {{ blogsError || searchError }}</p>
     <section v-show="!showBlogsTraditional">
         <ListBlogsCards />
     </section>
@@ -71,8 +70,8 @@ const searchTags = computed (() => {
 })
 
 
-const { blogs, error: blogsError, loadBlogs } = useGetBlogs()
-const { blogs: searchedBlogs, error: searchError, loadSearchedBlogs } = useGetSearchedBlogs()
+const { blogs, loadBlogs } = useGetBlogs()
+const { blogs: searchedBlogs, loadSearchedBlogs } = useGetSearchedBlogs()
 
 
 // Join blogs && searched 
