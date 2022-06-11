@@ -2,7 +2,7 @@
     <li class="comment">
         <div class="pt-2 pb-3 px-2 text-gray-600">
             <p class="font-bold text-gray-800 pb-0"> {{ singleComment.username }} </p>
-            <p class="italic font-light text-sm py-0"> {{ writtenDate }} </p>
+            <p class="italic font-light text-sm py-0"> {{ formattedDate }} </p>
             <p v-show="!edit" class="pt-2" > {{ singleComment.content }} </p>
 
             <div v-if="userId">
@@ -85,7 +85,7 @@ import usePatchComment from '/src/composables/comments/usePatchComment'
 
 const PostComment = defineAsyncComponent(() => import('../comments/PostComment.vue'))
 
-const { writtenDate, findDate } = useGetBlogDate()
+const { formattedDate, findDate } = useGetBlogDate()
 const { deleteComment } = useDeleteComment()
 const { patchResponse, patchComment } = usePatchComment()
 

@@ -1,4 +1,4 @@
-import createNoSocialsDiv from './useCreateNoSocialsDiv'
+import useCreateNoSocialsWrapper from './useCreateNoSocialsWrapper'
 
 const createScript = (widgetName, href) => {
     const embed = document.createElement('script')
@@ -7,18 +7,16 @@ const createScript = (widgetName, href) => {
     document.body.append(embed)
 }
 
+const setWrapperLoop = (query) => {
+    const noSocialsWrapper = useCreateNoSocialsWrapper()
+    let frames = document.querySelectorAll(query)
+    frames.forEach(frame => {
+        frame.parentNode.insertBefore(noSocialsWrapper, frame)
+        frame.remove()
+    })
+} 
+
 export default () => {
-
-    const setWrapperLoop = (query) => {
-        let frames = document.querySelectorAll(query) 
-        frames.forEach(frame => {
-            // No Socials Message
-            const { noSocialsDiv } = createNoSocialsDiv();
-            frame.parentNode.insertBefore(noSocialsDiv, frame)
-            frame.remove()
-        })
-    }      
-
     let socialMediaScripts
     if (localStorage.socialMediaCookies) socialMediaScripts= JSON.parse(localStorage.socialMediaCookies)
 

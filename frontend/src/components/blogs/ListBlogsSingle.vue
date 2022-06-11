@@ -37,7 +37,7 @@ import AuthorBar from './AuthorBar.vue'
 
 import useGetBlogDate from '/src/composables/blogs/useGetBlogDate'
 
-const { writtenDate, findDate } = useGetBlogDate()
+const { formattedDate, findDate } = useGetBlogDate()
 
 const props = defineProps(['blog'])
 
@@ -46,6 +46,6 @@ const blogServer = import.meta.env.VITE_BLOG_SERVER
 findDate(props.blog.publishDate)
 
 provide('author', props.blog.author)
-provide('writtenDate', writtenDate.value)
+provide('formattedDate', formattedDate.value)
 
 </script>

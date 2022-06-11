@@ -36,11 +36,10 @@ const buttons = [
     'Card', 
 ]
 
-const { editHTML } = useEditBlogHTML()
 const { start, end } = useGetSelectedText()
 
 const insertHTML = (type) => {
-    let val = editHTML(props.modelValue, type, start.value, end.value)
+    let val = useEditBlogHTML(props.modelValue, type, start.value, end.value)
     emit('update:modelValue', val)
 }
 

@@ -91,7 +91,7 @@ const filteredBlogs = computed (() => {
         return filteredByLanguage.value
     } else {
         return filteredByLanguage.value.filter(blog => {
-            return useSearchFilter (searchTags.value, blog.tags)
+            return useSearchFilter(searchTags.value, blog.tags)
         })
     }
 })

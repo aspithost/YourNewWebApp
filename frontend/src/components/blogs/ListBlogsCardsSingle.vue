@@ -65,7 +65,7 @@ import ColoredTags from './ColoredTags.vue'
 import useGetBlogDate from '/src/composables/blogs/useGetBlogDate'
 import useSanitizeHTML from '/src/composables/useSanitizeHTML'
 
-const { writtenDate, findDate } = useGetBlogDate()
+const { formattedDate, findDate } = useGetBlogDate()
 
 const props = defineProps(['blog'])
 
@@ -85,6 +85,6 @@ const numberOfMins = computed (() => {
 findDate(props.blog.publishDate)
 
 provide('author', props.blog.author)
-provide('writtenDate', writtenDate.value)
+provide('formattedDate', formattedDate.value)
 
 </script>

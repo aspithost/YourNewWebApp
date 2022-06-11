@@ -22,7 +22,7 @@
             <div 
                 class="text-xs sm:text-sm italic font-light"
                 :class="{'md:text-sm lg:text-sm' : !route.path.match(/\/blogs\/\d/) }"> 
-                    {{ writtenDate }}
+                    {{ formattedDate }}
             </div>
         </div>
 
@@ -34,7 +34,7 @@ import { inject } from 'vue'
 import { useRoute } from 'vue-router'
 
 const author = inject('author')
-const writtenDate = inject('writtenDate')
+const formattedDate = inject('formattedDate')
 
 const route = useRoute()
 

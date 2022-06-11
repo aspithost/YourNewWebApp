@@ -1,14 +1,11 @@
-export default () => {
-    const editHTML = (content, type, start, end) => {
-        if (type.match(/(strong)|(italic)|(^code$)|(link)/g)) {
-            content = insertHTML(content, type, start, end)
-        } else {
-            content = addHTML(content, type, start)
-        }
-        
-        return content
+export default (content, type, start, end) => {
+    if (type.match(/(strong)|(italic)|(^code$)|(link)/g)) {
+        content = insertHTML(content, type, start, end)
+    } else {
+        content = addHTML(content, type, start)
     }
-    return { editHTML }
+    
+    return content
 }
 
 const insertHTML = (content, type, start, end) => {
