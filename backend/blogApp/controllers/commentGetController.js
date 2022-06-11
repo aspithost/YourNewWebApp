@@ -29,14 +29,14 @@ exports.getComments = async (req, res, next) => {
                     const populatedCommentsInstance = await dbCommentsInstance.populate('comments');
 
                     // Loop to populate replies
-                    const [ numberOfComments, commentsArray ] = await getPopulatedComments(populatedCommentsInstance.comments);
+                    const { comments, numberOfComments } = await getPopulatedComments(populatedCommentsInstance.comments);
 
                     // Alles cachen
-                    cacheComments(req.params.blogId, commentsArray);
+                    cacheComments(req.params.blogId, comments);
                     cacheNumberOfComments(req.params.blogId, numberOfComments);
 
                     return res.status(200).json({
-                        comments: commentsArray
+                        comments
                     });
                 }   
             } else {
@@ -65,7 +65,7 @@ const getPopulatedComments = async (comments) => {
         return comments     
     }
 
-    await populateComments(comments)
+    await populateComments(comments);
 
-    return [ numberOfComments, comments ]
+    return { comments, numberOfComments } 
 }
