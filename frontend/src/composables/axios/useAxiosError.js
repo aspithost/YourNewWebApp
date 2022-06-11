@@ -11,7 +11,6 @@ export default () => {
     const axiosError = computed(() => store.state.axiosError)
   
     const route = useRoute()
-    const path = computed (() => route.path)  
 
     onMounted(() => {
         axiosArray.forEach(instance => {
@@ -24,5 +23,5 @@ export default () => {
         })
     })
 
-    watch(path, () => store.dispatch('storeAxiosError', false))
+    watch(route, () => store.dispatch('storeAxiosError', false))
 }
