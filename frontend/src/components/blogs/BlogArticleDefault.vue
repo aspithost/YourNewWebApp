@@ -113,9 +113,10 @@ const getEmbeddedBlogs = async () => {
 }
 
 
-
 // Pre-tag & Code Highlighter
-const { highlightCode } = useHighlightJs()
+const highlightCode = ref(false)
+onMounted (() => highlightCode.value = true)
+useHighlightJs()
 
 
 // Intercept links to blogs on own website and route with Vue-Router.

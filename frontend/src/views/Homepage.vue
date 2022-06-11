@@ -248,7 +248,10 @@ onUnmounted(() => codeblockKey.value += 1)
 
 
 // Pre-tag & Code Highlighter
-const { highlightCode } = useHighlightJs()
+// Only render codeblocks after mount to prevent hydration errors
+const highlightCode = ref(false)
+onMounted (() => highlightCode.value = true)
+useHighlightJs()
 
 
 // Scroll Into View Logic

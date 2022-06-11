@@ -21,16 +21,11 @@ hljs.registerLanguage('xml', XML)
 import '/src/highlightjs.css'
 
 export default () => {
-    const highlightCode = ref(false)
-
     onMounted(() => {
-        highlightCode.value = true
         setTimeout (() => {
             if (document.querySelector('pre code') && !document.querySelector('pre code').classList.length) {
                 hljs.highlightAll()
             }
         }, 200)
     })
-
-    return { highlightCode }
 }
