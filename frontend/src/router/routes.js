@@ -1,20 +1,24 @@
-export default (store) => {
+export default (user) => {
 
+    // Pass in user as a prop obtained from store on initial render with SSR 
+    const setUser = (to) => {
+        to.params.user = user
+    }
+
+    // Authenticate User before accessing route. If not, redirect to home
     const authenticate = (to) => {
-        if (!store.state.user || store.state.user.rights < 2 && to.path !== '/user') {
+        if (!user || user.rights < 2 && to.path !== '/user') {
             return '/'
         } else {
             setUser(to)
         }
     }
-
-    const checkIfUser = (to, from) => {
-        if (store.state.user) return from.path
+  
+    // Prevent users from accessing routes for non-users
+    const blockUsers = (to, from) => {
+        if (user) return from.path
     }
 
-    const setUser = (to) => {
-        to.params.user = store.state.user
-    }
     const routes = [
         {
             path: '/',
@@ -88,25 +92,25 @@ export default (store) => {
             path: '/users/join',
             name: 'Join',
             component: () => import('../views/Join.vue'),
-            beforeEnter: (to, from) => checkIfUser(to, from)
+            beforeEnter: (to, from) => blockUsers(to, from)
         },
         {
             path: '/users/login',
             name: 'Login',
             component: () => import('../views/Login.vue'),
-            beforeEnter: (to, from) => checkIfUser(to, from)
+            beforeEnter: (to, from) => blockUsers(to, from)
         },
         {
             path: '/users/password',
             name: 'Password',
             component: () => import('../views/Password.vue'),
-            beforeEnter: (to, from) => checkIfUser(to, from)
+            beforeEnter: (to, from) => blockUsers(to, from)
         },
         {
             path: '/users/verify',
             name: 'Verify',
             component: () => import('../views/Verify.vue'),
-            beforeEnter: (to, from) => checkIfUser(to, from)
+            beforeEnter: (to, from) => blockUsers(to, from)
         },
         {
             path: '/termsofuse',
