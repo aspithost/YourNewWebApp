@@ -17,12 +17,14 @@ const whenTouching = (entries) => {
     })
 }
 
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0 
+}
+
 onMounted(() => {
-    observer.value = new IntersectionObserver(whenTouching, {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.4    
-    })
+    observer.value = new IntersectionObserver(whenTouching, options)
     observer.value.observe(document.querySelector(".observer"))  
 })
 </script>
