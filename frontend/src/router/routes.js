@@ -1,13 +1,13 @@
-export default (user) => {
+export default (store) => {
 
     // Pass in user as a prop obtained from store on initial render with SSR 
     const setUser = (to) => {
-        to.params.user = user
+        to.params.user = store.state.user
     }
 
     // Authenticate User before accessing route. If not, redirect to home
     const authenticate = (to) => {
-        if (!user || user.rights < 2 && to.path !== '/user') {
+        if (!store.state.user || store.state.user.rights < 2 && to.path !== '/user') {
             return '/'
         } else {
             setUser(to)
@@ -16,7 +16,7 @@ export default (user) => {
   
     // Prevent users from accessing routes for non-users
     const blockUsers = (to, from) => {
-        if (user) return from.path
+        if (store.state.user) return from.path
     }
 
     const routes = [

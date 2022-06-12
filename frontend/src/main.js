@@ -15,7 +15,7 @@ export function createApp() {
 
     const head = createHead()
     const store = createStore()
-    const router = createRouter(store.state.user)
+    const router = createRouter(store)
 
     app
         .use(router)
