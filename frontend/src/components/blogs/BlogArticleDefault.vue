@@ -63,7 +63,7 @@
 </template>
 
 <script setup>
-import { computed, inject, onMounted, provide, watch } from 'vue'
+import { computed, inject, onMounted, provide, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 
