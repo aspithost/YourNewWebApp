@@ -38,7 +38,7 @@
                 :src="`${blogServer}/fissafotos/${blog.image}`"
                 :alt="`${blog.title}`"
             >
-            <figcaption v-if="blog.imageAttribution" class="pt-2">
+            <figcaption v-if="blog.imageAttribution" class="pt-2 text-sm font-light lg:font-normal">
                 {{ blog.imageAttribution }}
             </figcaption>
         </figure>
@@ -46,7 +46,7 @@
         <div 
             v-html="blog.content" 
             @click="listenToClicks"
-            class="blog-content text-default pt-4">
+            class="blog-content text-default">
         </div>
 
         <ColoredTags
