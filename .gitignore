@@ -1,6 +1,7 @@
 backend/commentsApp
 containers
 dumps
+guides
 ynwa.conf
 
 dist*
