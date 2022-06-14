@@ -39,13 +39,13 @@
             <MyFooter class="border-t border-gray-300 pt-4 text-sm" />
         </footer>
         
-        <CookieWall v-if="!cookiesAccepted && !route.meta.hideCookieWall" /> 
+        <CookieWall v-if="mounted && !cookiesAccepted && !route.meta.hideCookieWall" /> 
         
     </div>
 </template>
 
 <script setup>
-import { computed, defineAsyncComponent, provide, ref } from 'vue'
+import { computed, defineAsyncComponent, provide, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -79,6 +79,9 @@ useNProgress()
 useRefreshUser()
 useSetScreenWidth()
 
+// Only load Cookie Wall after mount for SEO purposes
+const mounted = ref(false)
+onMounted(() => mounted.value = true)
 
 // Homepage Banner Buttons
 const clicked = ref(null)
