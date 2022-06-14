@@ -18,7 +18,7 @@ export async function render(url, cookiewallCookie, languageCookie, refreshToken
 
     // Cookiewall on or off
     if (cookiewallCookie) {
-        if (Date.now() < cookiewallCookie + 31536000000 && cookiewallCookie > 1646476159087) {
+        if (Date.now() < cookiewallCookie + 31536000000 && cookiewallCookie > 1655193562270) {
             store.dispatch('allowFunctionalCookies', true)
         } 
     }  
