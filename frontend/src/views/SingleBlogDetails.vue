@@ -4,7 +4,7 @@
     <!-- v-if is voor hydration van saved blog -->
     <BlogArticle v-if="blog" :key="key" />
 
-    <div v-if="showMostPopular" class="pt-2" >
+    <div v-if="isSmallDevice" class="pt-2" >
         <MostPopular />
     </div>
 
@@ -95,10 +95,10 @@ const intersected = () => {
 }
 
 
-// Show Most Popular Component based on screen size
-const screenSize = computed (() => store.state.screenSize)
-const showMostPopular = computed (() => {
-    return screenSize.value && screenSize.value < 768 ? true : false
+// Show Most Popular Component based on screen width
+const screenWidth = computed (() => store.state.screenWidth)
+const isSmallDevice = computed (() => {
+    return screenWidth.value && screenWidth.value < 768 ? true : false
 })
 
 

@@ -46,8 +46,8 @@ export const actions = {
         commit('acceptFunctionalCookies', value)
     },
 
-    storeScreenSize ({ commit }, screenSize) {
-        commit('setScreenSize', screenSize)
+    storescreenWidth ({ commit }, screenWidth) {
+        commit('setscreenWidth', screenWidth)
     },
 
     storeLanguageDutch ({ commit }, languageDutch) {

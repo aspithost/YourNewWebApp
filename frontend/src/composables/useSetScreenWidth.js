@@ -6,7 +6,7 @@ import useEventListener from './useEventListener'
 export default () => {
     const store = useStore()
 
-    const screenSize = computed (() => store.state.screenSize)
+    const screenWidth = computed (() => store.state.screenWidth)
     
     const width = ref(null)
 
@@ -21,13 +21,13 @@ export default () => {
 
     let timer
     watchEffect(() => {
-        if (width.value && !screenSize.value) {
-            store.dispatch('storeScreenSize', width.value)
+        if (width.value && !screenWidth.value) {
+            store.dispatch('storescreenWidth', width.value)
         } 
 
         clearTimeout(timer)
         timer = setTimeout(() => {
-            store.dispatch('storeScreenSize', width.value)
+            store.dispatch('storescreenWidth', width.value)
         }, 250)
     })
 }

@@ -12,8 +12,8 @@ export const mutations = {
         state.languageDutch = languageDutch
     },
 
-    setScreenSize (state, screenSize) {
-        state.screenSize = screenSize
+    setscreenWidth (state, screenWidth) {
+        state.screenWidth = screenWidth
     },
 
     setShowBlogsTraditional (state, value) {

@@ -27,7 +27,7 @@
 
                 </div>
 
-                <aside v-if="showSidebar" class="md:col-span-4 md:pl-1 md:mt-2 2xl:col-span-2">
+                <aside v-if="screenWidth && !isSmallDevice" class="md:col-span-4 md:pl-1 md:mt-2 2xl:col-span-2">
                     <Sidebar />
                 </aside>
 
@@ -35,7 +35,7 @@
 
         </main>
 
-        <footer v-if="screenSize && !showSidebar" class="pb-4 px-8">
+        <footer v-if="isSmallDevice" class="pb-4 px-8">
             <MyFooter class="border-t border-gray-300 pt-4 text-sm" />
         </footer>
         
@@ -69,10 +69,11 @@ const store = useStore()
 
 const axiosError = computed (() => store.state.axiosError)
 const cookiesAccepted = computed(() => store.state.acceptFunctionalCookies) 
-const screenSize = computed (() => store.state.screenSize)
+const screenWidth = computed (() => store.state.screenWidth)
 const user = computed (() => store.state.user)
 
-const showSidebar = computed (() => screenSize.value >= 768 ? true : false)
+// Load contents based on device screen width
+const isSmallDevice = computed (() => screenWidth.value && screenWidth.value < 768 ? true : false)
 
 useAxiosError()
 useNProgress()
