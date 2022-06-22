@@ -20,8 +20,7 @@
             <router-link :to="{ name: 'Blogs' }">
                 <Button 
                     label="Latest Blogs"
-                >
-                </Button>                 
+                />               
             </router-link>
         </div>
     </div>
