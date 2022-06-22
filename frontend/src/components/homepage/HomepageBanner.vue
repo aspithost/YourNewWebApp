@@ -11,7 +11,7 @@
         <div class="flex flex-wrap justify-center mb-6 md:mb-8">
             <a
                 v-for="(button, index) in ['Get Coding!', 'About YNWA', 'About Me']" 
-                @click="clicked(button)"
+                @click="clicked(button, $event)"
                 :href="`/#${button.toLowerCase().replace(' ', '-').replace('!', '')}`"
                 :class="{ 'hidden md:contents' : index > 0}"
             >
@@ -29,7 +29,8 @@
 <script setup>
 const emit = defineEmits(['clicked'])
 
-const clicked = (button) => {
+const clicked = (button, event) => {
+    console.log(event)
     event.preventDefault()
     emit('clicked', `#${button.toLowerCase().replace(' ', '-').replace('!', '')}`)
 }

@@ -26,7 +26,7 @@ const emit = defineEmits(['update:modelValue'])
 const id = useGetInputId(props.label)
 const { updateValue } = updateFormValue(emit)
 
-const checkForTab = () => {
+const checkForTab = (event) => {
     if(event.code === 'Tab') {
         let val = event.target.value
         let start = event.target.selectionStart
