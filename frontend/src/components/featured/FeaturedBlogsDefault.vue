@@ -4,7 +4,7 @@
         class="bg-white rounded-md border border-gray-200 shadow-md p-4 sm:p-6 md:p-4 mb-2"
     >
         <div class="lg:grid lg:grid-cols-8 border-b pb-1">
-            <TopStory :topBlog="filteredFeaturedBlogs[0]" class="pb-2 lg:pb-0"/>
+            <TopStory :blog="filteredFeaturedBlogs[0]" class="pb-2 lg:pb-0"/>
             <div class="flex flex-col space-y-2 pt-2 lg:pt-0 lg:col-start-6 lg:col-span-3">  
 
                 <div v-for="(blog, index) in filteredFeaturedBlogs.slice(1,5)" class="h-1/4">

@@ -60,7 +60,12 @@ const BlogArticle = defineAsyncComponent(() => import('/src/components/blogs/Blo
 const ListComments = defineAsyncComponent(() => import('../components/comments/ListComments.vue'))
 const MostPopular = defineAsyncComponent(() => import ('../components/sidebar/MostPopular.vue'))
 
-const props = defineProps(['id', 'slug', 'user', 'successMessage'])
+const props = defineProps({
+    id: String,
+    slug: String,
+    successMessage: String,
+    user: Object,
+})
 
 const route = useRoute()
 const router = useRouter()

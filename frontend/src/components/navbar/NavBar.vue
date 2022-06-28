@@ -88,7 +88,7 @@ import Languages from './Languages.vue'
 
 import useEventListener from '/src/composables/useEventListener'
 
-const props = defineProps(['user'])
+const props = defineProps({ user: Object })
 
 const route = useRoute()
 

@@ -195,7 +195,10 @@ import useSetDate from '/src/composables/blogs/useSetDate'
 
 import usePostImage from '/src/composables/images/usePostImage'
 
-const props = defineProps(['blog', 'user'])
+const props = defineProps({
+    blog: Object,
+    user: Object
+})
 
 const router = useRouter()
 

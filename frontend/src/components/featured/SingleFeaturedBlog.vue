@@ -19,6 +19,8 @@
 
 <script setup>
 
-const props = defineProps(['blog', 'index'])
-
+const props = defineProps({
+    blog: Object,
+    index: Number
+})
 </script>

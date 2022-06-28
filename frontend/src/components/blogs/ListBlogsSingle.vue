@@ -39,7 +39,7 @@ import useGetBlogDate from '/src/composables/blogs/useGetBlogDate'
 
 const { formattedDate, findDate } = useGetBlogDate()
 
-const props = defineProps(['blog'])
+const props = defineProps({ blog: Object })
 
 const blogServer = import.meta.env.VITE_BLOG_SERVER
 

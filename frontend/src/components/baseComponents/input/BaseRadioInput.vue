@@ -15,7 +15,12 @@
 <script setup>
 import updateFormValue from '/src/composables/baseComponents/updateFormValue'
 
-const props = defineProps([ 'id', 'label', 'modelValue' ])
+const props = defineProps({
+    id: String,
+    label: String,
+    modelValue: String
+})
+
 const emit = defineEmits(['update:modelValue'])
 
 const { updateValue } = updateFormValue(emit)

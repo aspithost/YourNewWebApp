@@ -140,7 +140,7 @@ import useLogoutUser from '../composables/users/useLogoutUser'
 import usePatchUser from '../composables/users/usePatchUser'
 import usePostAvatar from '../composables/images/usePostAvatar'
 
-const props = defineProps(['user'])
+const props = defineProps({ user: Object })
 
 const router = useRouter()
 const store = useStore()

@@ -22,7 +22,7 @@
 
 <script setup>
 
-const props = defineProps(['blog'])
+const props = defineProps({ blog: Object })
 
 const blogServer = import.meta.env.VITE_BLOG_SERVER
 

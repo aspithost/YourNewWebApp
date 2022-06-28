@@ -29,5 +29,7 @@
 </template>
 
 <script setup>
-const props = defineProps(['filteredBlogs'])
+const props = defineProps({
+    filteredBlogs: Array
+})
 </script>

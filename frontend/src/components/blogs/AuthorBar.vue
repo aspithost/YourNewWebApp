@@ -60,7 +60,10 @@ import { useRoute } from 'vue-router'
 
 import AuthorBarBasic from './AuthorBarBasic.vue'
 
-const props = defineProps(['blogTitle', 'numberOfComments'])
+const props = defineProps({
+    blogTitle: String,
+    numberOfComments: Number
+})
 
 const route = useRoute()
 

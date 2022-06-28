@@ -14,7 +14,7 @@
 import useEditBlogHTML from '/src/composables/blogs/useEditBlogHTML'
 import useGetSelectedText from '/src/composables/blogs/useGetSelectedText'  
 
-const props = defineProps(['modelValue'])
+const props = defineProps({ modelValue: String })
 const emit = defineEmits(['update:modelValue'])
 
 const buttons = [

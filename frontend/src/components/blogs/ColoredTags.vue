@@ -30,7 +30,7 @@ import { useRouter } from 'vue-router'
 
 import useEmitTag from '/src/composables/blogs/useEmitTag'
 
-const props = defineProps(['tags'])
+const props = defineProps({ tags: Array })
 
 const router = useRouter()
 

@@ -67,7 +67,7 @@ import useSanitizeHTML from '/src/composables/useSanitizeHTML'
 
 const { formattedDate, findDate } = useGetBlogDate()
 
-const props = defineProps(['blog'])
+const props = defineProps({ blog: Object })
 
 const blogServer = import.meta.env.VITE_BLOG_SERVER
 

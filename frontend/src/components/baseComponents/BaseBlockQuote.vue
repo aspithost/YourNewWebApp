@@ -28,5 +28,11 @@
 </template>
 
 <script setup>
-const props = defineProps(['alt', 'captionOne', 'captionTwo', 'content', 'src'])
+const props = defineProps({
+    alt: String,
+    captionOne: String,
+    captionTwo: String,
+    content: String,
+    src: String
+})
 </script>

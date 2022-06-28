@@ -34,7 +34,7 @@ import useSearchFilter from '/src/composables/blogs/useSearchFilter'
 const ListBlogs = defineAsyncComponent (() => import('/src/components/blogs/ListBlogs.vue'))
 const ListBlogsCards = defineAsyncComponent (() => import('/src/components/blogs/ListBlogsCards.vue'))
 
-const props = defineProps(['tag'])
+const props = defineProps({ tag: String })
 const store = useStore()
 
 const languageDutch = computed(() => store.state.languageDutch)

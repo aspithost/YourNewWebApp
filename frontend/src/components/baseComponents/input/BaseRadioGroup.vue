@@ -14,7 +14,11 @@
 import BaseRadioInput from '/src/components/baseComponents/input/BaseRadioInput.vue'
 import updateFormValue from '/src/composables/baseComponents/updateFormValue'
 
-const props = defineProps([ 'labels', 'modelValue', 'name' ])
+const props = defineProps({
+    labels: Array,
+    modelValue: String,
+    name: String
+})
 const emit = defineEmits(['update:modelValue'])
 
 const { updateValue } = updateFormValue(emit)

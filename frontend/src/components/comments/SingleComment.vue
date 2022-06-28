@@ -91,7 +91,7 @@ const { patchResponse, patchComment } = usePatchComment()
 
 const { userId, userRights } = inject('user')
 
-const props = defineProps(['comment'])
+const props = defineProps({ comment: Object })
 const emit = defineEmits(['updateCounter'])
 
 const edit = ref(false)

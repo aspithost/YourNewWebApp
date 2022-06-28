@@ -10,6 +10,9 @@ import { Head } from '@vueuse/head'
 
 import EditBlog from '../components/blogs/EditBlog.vue'
 
-const props = defineProps(['blog', 'user'])
+const props = defineProps({
+    blog: Object,
+    user: Object
+})
 
 </script>

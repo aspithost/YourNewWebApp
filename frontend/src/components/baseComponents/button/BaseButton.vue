@@ -13,6 +13,9 @@
 
 <script setup>
 
-const props = defineProps(['label', 'toggled'])
+const props = defineProps({
+    label: String, 
+    toggled: Boolean
+})
 
 </script>

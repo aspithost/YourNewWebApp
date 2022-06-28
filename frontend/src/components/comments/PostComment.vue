@@ -24,7 +24,7 @@ import useSanitizeHTML from '/src/composables/useSanitizeHTML'
 const blogId = inject('blogId')
 const { userId, username } = inject('user')
 
-const props = defineProps(['commentId'])
+const props = defineProps({ commentId: String })
 
 const emit = defineEmits(['updateCounter'])
 

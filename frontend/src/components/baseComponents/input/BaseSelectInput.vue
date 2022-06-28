@@ -36,7 +36,13 @@ import { onMounted, ref } from 'vue'
 import useEventListener from '/src/composables/useEventListener'
 import useGetInputId from '/src/composables/baseComponents/useGetInputId'
 
-const props = defineProps([ 'id', 'label', 'modelValue', 'options', 'width' ])
+const props = defineProps({
+    label: String,
+    modelValue: Number,
+    options: Array,
+    width: Number
+})
+
 const emit = defineEmits(['update:modelValue'])
 
 const id = useGetInputId(props.label)

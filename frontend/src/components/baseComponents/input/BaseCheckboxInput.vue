@@ -18,7 +18,10 @@
 import updateFormValue from '/src/composables/baseComponents/updateFormValue'
 import useGetInputId from '/src/composables/baseComponents/useGetInputId'
 
-const props = defineProps([ 'id', 'label', 'modelValue' ])
+const props = defineProps({
+    label: String,
+    modelValue: Boolean
+})
 const emit = defineEmits(['update:modelValue'])
 
 const id = useGetInputId(props.label)
